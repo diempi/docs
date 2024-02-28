@@ -23,7 +23,7 @@ jobs:
         run: yarn install
       - name: Build
         working-directory: ./docs
-        run: yarn build
+        run: yarn build-gh
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
