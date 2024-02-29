@@ -1,4 +1,5 @@
 ---
+permalink: "/gateways/ar-io-node/overview"
 prev: "./windows-setup"
 next: "./linux-setup"
 ---
