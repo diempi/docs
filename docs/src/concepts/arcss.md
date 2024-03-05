@@ -83,3 +83,35 @@ ar://good-morning
 
 The ARCSS protocol, along with the WayFinder extension, discerns between TxIds and ArNS names. Once the suitable `https://` request is formulated, the chosen gateway translates the ArNS name based on the ArNS smartweave contract.
 
+## Wayfinder
+
+The [AR.IO WayFinder browser extension](https://chrome.google.com/webstore/detail/ario-WayFinder/hnhmeknhajanolcoihhkkaaimapnmgil) is a browser extension designed to facilitate the resolving of `ar://` urls. 
+
+### v0.0.10
+
+As of v0.0.10, Wayfinder supports the resolution of TXT records to Arwevae content on top level domains. This innovative feature leverages DNS TXT records to associate Arweave transaction IDs with human-readable domain names, facilitating intuitive and memorable access to permaweb content. By simply entering an AR:// URL with a domain name, Wayfinder resolves the corresponding Arweave transaction ID through DNS TXT records, redirecting users directly to the content hosted on the Arweave network.
+
+**Setup**: Owners of a domain can set a TXT record for that domain following the format `ARTX <Arweave TXID>`.
+
+<center><img :src="$withBase('/images/arcss-txt.png')"></center>
+
+**AR:// Redirection**: With a TXT record set properly, whenever a user (who has Wayfinder installed) enters an AR:// URL containing a domain name (e.g., `ar://example.com`), Wayfinder performs a DNS lookup for that TXT record in order to redirect to the Arweave content. The lookup is completed through a secure DNS-over-HTTPS query to ensure privacy and integrity.
+
+**Dynamic Content Resolution**: After retrieving the TXT record, Wayfinder extracts that Arweave transaction ID and dynamically redirects the user to the content on the permaweb. This process is transparent to the user, providing a seamless experience as if accessing a traditional website.
+
+### Key Features
+
+- **Gasless**: TXT records can be set without any onchain transactions that would require gas fees.
+- **Easy Integration**: Domain owners can easily link their permaweb content to their domains, making it accessible through a simple AR:// URL.
+- **Dyncamic Content Access**: Content links can be updated in real-time through DNS TXT records, without requiring any changes to the AR:// URL itself.
+- **Enhanced User Experience**: Offers users a familiar and easy-to-remember way to access permaweb content, leveraging standard web domain names.
+- **Security and Privacy**: Secure DNS-over-HTTPS queries for DNS lookups protect user privacy and enhances security.
+
+### Use Cases
+
+- **Branded Content Access**: Companies and individuals can brand their permaweb content, making it accessible through their domain, enhancing brand visibility and user trust.
+- **Dynamic Content Updates**: Domain owners can easily update what Permaweb content their AR:// URL resolves to, which is ideal for frequently updated resources like documents, blogs, and application interfaces.
+- **Educational and Informational Resources**: Educational institutions and information providers can make their resources permanently available on the permaweb, accessible through simple, memorable URLs.
+
+This feature marks a significant advancement in making decentralized content more accessible and user-friendly, bridging the gap between traditional internet usability and the permaweb’s permanence and censorship-resistant nature.
+
