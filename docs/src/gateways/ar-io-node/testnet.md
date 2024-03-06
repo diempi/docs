@@ -10,22 +10,22 @@ tags: [testnet, join, application, jwk, qty, fqdn, label, note, properties]
 
 1. Must have a fully functional AR.IO gateway.
     - This includes the ability to resolve ArNS subdomains.
-    - Follow installation instructions for [windows](/gateways/ar-io-node/windows-setup) or [linux](/gateways/ar-io-node/linux-setup) and get help from the [AR.IO community](https://discord.gg/7zUPfN4D6g).
+    - Follow installation instructions for [windows](/gateways/ar-io-node/windows-setup) or [linux](/gateways/ar-io-node/linux-setup) and get help from the [ar.io community](https://discord.gg/7zUPfN4D6g).
 
 2. Gateway must be associated with an Arweave Wallet.
-    - Learn about creating Arweave wallets [here](/../wallet)
+    - Learn about creating Arweave wallets [here](https://ar.io/wallet)
 
 3. Arweave wallet must be funded with enough AR tokens to pay for transaction gas.
 
 ## Submit an Application
 
-Joining the AR.IO Testnet requires staking a minimum of 10,000 Test IO Tokens. You must have Test IO Tokens before you are able to join. Test IO Tokens are currently distributed through an application system in the [AR.IO Discord](https://discord.gg/7zUPfN4D6g).
+Joining the ar.io Testnet requires staking a minimum of 10,000 Test IO Tokens. You must have Test IO Tokens before you are able to join. Test IO Tokens are currently distributed through an application system in the [ar.io Discord](https://discord.gg/7zUPfN4D6g).
 
-New applications for joining the Testnet are not currently being accepted. Be sure to join the [AR.IO Discord](https://discord.com/invite/7zUPfN4D6g) to stay up to date on Testnet status and possible future availability prior to the launch of the Mainnet.
+New applications for joining the Testnet are not currently being accepted. Be sure to join the [ar.io Discord](https://discord.com/invite/7zUPfN4D6g) to stay up to date on Testnet status and possible future availability prior to the launch of the Mainnet.
 
 ## Setting up and Running the Join Script
 
-Joining the AR.IO Testnet is currently completed by manually running a script. The process for doing so is as follows:
+Joining the ar.io Testnet is currently completed by manually running a script. The process for doing so is as follows:
 
 ### Clone the Repo
 
@@ -54,7 +54,7 @@ Joining the testnet requires signing and funding a transaction that interacts wi
 
 You will need to provide some information specific to your gateway before running the join script. You can do this by opening the script file in any code or text editor. The file is located at `testnet-contract > tools > join-network.ts`
 
-Each line that needs to be edited begins with "const", followed by a variable name, and "=" sign, and its value. Each line is accompanied by a note to inform you of its purpose. The following variables MUST be changed in order to successfully join the AR.IO Testnet:
+Each line that needs to be edited begins with "const", followed by a variable name, and "=" sign, and its value. Each line is accompanied by a note to inform you of its purpose. The following variables MUST be changed in order to successfully join the ar.io Testnet:
 
 - **qty**: Quantity of Test IO Tokens to stake to join the Testnet. This value must be at least 10,000, and not greater than the number of Test IO tokens in your wallet.
 - **label**: A friendly label for your Gateway. There currently a 16 character limit for this value.
@@ -78,7 +78,7 @@ Once you have Test IO Tokens and all of your settings configured properly, it's 
 yarn ts-node tools/join-network.ts
 ```
 
-This will create an Arweave transaction interacting with the Testnet Smartweave contract, so it will require AR tokens to pay for gas. AR.IO recommends having at least 0.05 AR to ensure a successful transaction.
+This will create an Arweave transaction interacting with the Testnet Smartweave contract, so it will require AR tokens to pay for gas. ar.io recommends having at least 0.05 AR to ensure a successful transaction.
 
 
 
