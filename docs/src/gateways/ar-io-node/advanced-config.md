@@ -32,7 +32,7 @@ View examples of the admin endpoints [here](./admin/admin-api.md)
 
 ## Wallet Association
 
-In order to participate in the greater [ar.io network](/../), Gateway nodes need to associate themselves with an Arweave wallet. This can be configured by setting the `AR_IO_WALLET` key value in your `.env` file.
+In order to participate in the greater [ar.io network](https://ar.io), Gateway nodes need to associate themselves with an Arweave wallet. This can be configured by setting the `AR_IO_WALLET` key value in your `.env` file.
 
 ```
 AR_IO_WALLET=1seRanklLU_1VTGowDZdD7s_-7k1qowT6oeFZHUZiZo

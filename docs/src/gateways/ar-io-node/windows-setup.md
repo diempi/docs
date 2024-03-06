@@ -85,11 +85,9 @@ Before starting the installation process, ensure you have the following:
      - `AR_IO_WALLET` is optional, and sets the wallet you want associated with your Gateway. An associated wallet is required to join the AR.IO network.
      - `OBSERVER_WALLET` is the public address of the wallet used to sign Observer transactions. This is required for Observer to run, but may be omitted if you are running a gateway outside of the AR.IO network and do not plan to run Observer. You will need to supply the keyfile to this wallet in the next step.
 
-    Advanced configuration options can be found at [ar.io/docs](https://ar.io/docs/gateways/ar-io-node/advanced-config.html)
+    Advanced configuration options can be found at [docs.ar.io](https://docs.ar.io/gateways/ar-io-node/advanced-config.html)
 
    - Save the file with the name ".env" and make sure to select "All Files" as the file type. This helps to ensure the file saves as ".env" and not ".env.txt"
-
-     Advanced configuration options can be found at [ar.io/docs](https://ar.io/docs/gateways/ar-io-node/advanced-config.html)
 
    **Note**: The `.env` file should be saved inside the same directory where you cloned the repository (e.g., `ar-io-node`).
 
