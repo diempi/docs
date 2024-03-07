@@ -102,23 +102,23 @@ module.exports = [
       },
     ],
   },
-  {
-    title: "Ecosystem and Community",
-    children: [
-      {
-        title: "AR.IO Foundation",
-        path: "/foundation",
-      },
-      {
-        title: "AR.IO Labs",
-        path: "/labs",
-      },
-      {
-        title: "Community Resources",
-        path: "/community-resources",
-      },
-    ],
-  },
+  // {
+  //   title: "Ecosystem and Community",
+  //   children: [
+  //     {
+  //       title: "AR.IO Foundation",
+  //       path: "/foundation",
+  //     },
+  //     {
+  //       title: "AR.IO Labs",
+  //       path: "/labs",
+  //     },
+  //     {
+  //       title: "Community Resources",
+  //       path: "/community-resources",
+  //     },
+  //   ],
+  // },
   {
     title: "Glossary",
     path: "/glossary",
@@ -170,5 +170,9 @@ module.exports = [
       //   path: "/contribute",
       // },
     ],
+  },
+  {
+    title: "Community Resources",
+    path: "/community-resources",
   },
 ];
