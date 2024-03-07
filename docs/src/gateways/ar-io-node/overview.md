@@ -1,7 +1,7 @@
 ---
 permalink: "/gateways/ar-io-node/overview"
-prev: "./windows-setup"
-next: "./linux-setup"
+# prev: "windows-setup.md"
+# next: "./linux-setup"
 ---
 
 # Overview
