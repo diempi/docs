@@ -8,6 +8,20 @@ next: false
 
 Welcome to the documentation page for the ar.io gateway release notes. Here, you will find detailed information about each version of the ar.io gateway, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io gateway. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io gateway [change logs](https://github.com/ar-io/ar-io-node/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io gateway by referring to this page for all release-related information.
 
+## [Release 7] - 2024 - 02 - 14
+
+- **Added**
+    - Add support for notifying other services of transactions and data items using webhooks (see README for details).
+    - Add support for filter negation (particularly useful for excluding large bundles from indexint).
+    - Improve unbundling throughput by decoupling data fetching from unbundling.
+    - Add Envoy and core service ARM builds.
+
+- **Changed**
+    - Improve resouce cleanup and shutdown behavior.
+    - Don't save Redis data to disk by default to help prevent memory issues on startup for small gateways.
+    - Reduce the amount of data sampled from large files by the observer.
+    - Ensure block poa2 field is not chached to reduce memory consumption.
+
 ## [Release 6] - 2024-01-29
 
 - **Fixed**
