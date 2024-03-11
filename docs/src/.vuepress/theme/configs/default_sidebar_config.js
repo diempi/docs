@@ -73,6 +73,10 @@ module.exports = [
         path: "/gateways/ar-io-node/advanced-config",
       },
       {
+        title: "Delegated Staking",
+        path: "/gateways/ar-io-node/delegated-staking"
+      },
+      {
         title: "Environmental Variables",
         path: "/gateways/ar-io-node/env",
       },
