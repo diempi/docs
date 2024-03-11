@@ -165,6 +165,10 @@ module.exports = [
         title: "GraphQL",
         path: "/guides/gql",
       },
+      {
+        title: "Delegated Staking",
+        path: "/guides/delegated-staking"
+      },
       // {
       //   title: "Contribute to Docs",
       //   path: "/contribute",
