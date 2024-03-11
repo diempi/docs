@@ -6,7 +6,7 @@ permalink: "/gateways/delegated-staking"
 
 ## Overview
 
-Gateway operators can choose to allow other people to stake tokens on their gateway. This is called "delegated staking", and it increases the number of tokens staked, which increases the likelihood of a gateway being chosen as an observer and potentially receive additional rewards for a given epoch (assuming that the gateway's observer is working properly). To incentivize this, you can set a portion of your gateway and observer rewards to be given to the people who stake on your gateway.
+Gateway operators can choose to allow other people to stake tokens on their gateway. This is called “delegated staking”, and it increases the number of tokens staked for a given gateway. The additionally staked tokens result in a greater `stakeWeight` for the gateway - increasing it’s likelihood chosen as an observer and potentially receive additional rewards for a given epoch (assuming that the gateway’s observer is working properly). To incentivize this, you can set a portion of your gateway and observer rewards to be given to the people who stake on your gateway.
 
 By default, delegated staking is disabled. You will need to enable it, and configure your settings, by running the `update-gateway-settings` script from the [testnet contract repo](https://github.com/ar-io/testnet-contract).
 
@@ -53,7 +53,7 @@ You will need a small amount of AR in this wallet, in addition to the IO tokens,
 You will need to edit the script to give it the correct information for when it runs. You can do this by opening the file, located at `testnet-contract > tools > update-gateway-settings.ts` in any code or text editor. Once you have the file open, you will need to look for these lines:
 
 ```ts
-// Enable or disable delegated staking.  If true, other token holders can delegate their stake to this gateway
+  // Enable or disable delegated staking.  If true, other token holders can delegate their stake to this gateway
   // const allowDelegatedStaking: boolean = true;
 
   // Number between 0-100 indicating the percent of gateway and observer rewards given to delegates eg. 30 is 30% distributed to delegates
