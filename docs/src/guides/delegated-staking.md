@@ -9,7 +9,7 @@ permalink: "/guides/delegated-staking"
 Delegated staking is a process by which a person can stake their own IO tokens on someone elses ar.io gateway. The additional staked tokens increase that gateway's chance to be selected as an observer, and so they have the potential to earn more rewards.
 In exchange, the person who delegates the tokens will receive a share of the gateway's rewards. Gateway operators can set the percentage of rewards are available for delegating wallets.
 
-You can find more specific information about delegated staking and how rewards are distributed in the [ar.io whitepaper](https://whitepaper.arweave.dev). 
+You can find more specific information about delegated staking and how rewards are distributed in the [ar.io whitepaper](https://whitepaper_ar-io.arweave.dev/). 
 
 ## Installing the Testnet Contract repo
 
@@ -83,4 +83,31 @@ Make sure your terminal is in the root folder of the testnet-contract repo (the 
 yarn ts-node tools/delegate-stake.ts
 ```
 
+## Withdrawing Stake
+
+If you want to take your staked tokens out of a gateway, the process is very similar. You will be editing and running the `decrease-delegate-stake.ts` file instead of the `delegate-stake.ts` file.
+
+The structures of bot files are similar, and there are only the same two lines to edit:
+
+```ts
+const qty = 500;
+```
+
+This line represents the number of tokens you want to remove from staking.
+
+```ts
+  const target = 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ';
+```
+
+This line represents the address of the gateway you want to withdraw from.
+
+Only the wallet that owns the staked tokens can withdraw, so make sure you are using the same wallet to run the script as you used to stake the tokens initially.
+
+Run the script in the same way you ran the staking script, being sure to use the decrease file and not the staking file.
+
+```bash
+yarn ts-node tools/decrease-delegate-stake.ts
+```
+
+Token withdrawals are not instant, and there is a period where the tokens will remain unavailable after you run the script. The length of this hold may vary a bit during testnet while optimal times are iterated upon.
 
