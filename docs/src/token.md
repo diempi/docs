@@ -10,10 +10,12 @@ permalink: "/token/"
 
 IO is the multifunction SmartWeave Token (SWT) that powers The AR.IO Network and its suite of permaweb applications. The IO Token (ɸ) has many uses, including:
 
-- protocol incentives,
+- Protocol incentives,
 
-- staking by gateways
+- Staking by gateways,
 
-- payments for services like the Arweave Name System (ArNS).
+- Payments for services like the Arweave Name System (ArNS),
+
+- Gateway delegated staking
 
 The token acts as a permissionless and censorship resistant medium of common value for the network.
