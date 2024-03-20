@@ -173,6 +173,15 @@ module.exports = [
         title: "Delegated Staking",
         path: "/guides/delegated-staking"
       },
+      {
+        title: "Experimental",
+        children: [
+          {
+            title: "AO ArNS Resolver",
+            path: "/experimental/ao-resolver"
+          },
+        ]
+      },
       // {
       //   title: "Contribute to Docs",
       //   path: "/contribute",

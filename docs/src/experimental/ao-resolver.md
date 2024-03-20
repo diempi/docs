@@ -1,4 +1,7 @@
-
+---
+permalink: "/guides/experimental/ao-resolver"
+next: false
+---
 
 # AO ArNS Resolver
 
@@ -32,8 +35,8 @@ If things work successfully, your aos terminal will print "undefined".
 
 You can resolve an ArNS name with the `ARNS.resolve` command.
 
-```
-ARNS.resolve("ardrive")
+```shell
+ARNS.resolve('ardrive')
 ```
 
 This will fetch all of the data related to the ArNS name `ardrive` and store it locally in your `NAMES` table. You can print that data by typing 
