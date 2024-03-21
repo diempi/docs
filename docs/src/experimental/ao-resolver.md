@@ -11,6 +11,14 @@ AO is in the early stages of development, with its infrastructure evolving quick
 
 ## Installation
 
+### From Blueprint
+
+From inside aos, simply type `.load-blueprint arns-resolver` to load the ArNS resolver into your aos process.
+
+### From Source
+
+To get access to the latest development version, you can install directly from the source code.
+
 The ArNS-resolver is a single file within the [ao-pilot](https://github.com/ar-io/ao-pilot/tree/main) Github repository from ar.io. The specific file is located [here](https://github.com/ar-io/ao-pilot/blob/main/src/arns-resolver.lua).
 
 You can install the ao-pilot repo on your computer with 
