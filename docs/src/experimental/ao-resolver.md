@@ -13,7 +13,7 @@ AO is in the early stages of development, with its infrastructure evolving quick
 
 ### From Blueprint
 
-From inside aos, simply type `.load-blueprint arns-resolver` to load the ArNS resolver into your aos process.
+From inside aos, simply type `.load-blueprint arns` to load the ArNS resolver into your aos process.
 
 ### From Source
 
