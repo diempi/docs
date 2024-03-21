@@ -1,6 +1,6 @@
 ---
 permalink: "/guides/experimental/ao-resolver"
-next: false
+prev: false
 ---
 
 # AO ArNS Resolver

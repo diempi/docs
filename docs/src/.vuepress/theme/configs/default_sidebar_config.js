@@ -180,6 +180,10 @@ module.exports = [
             title: "AO ArNS Resolver",
             path: "/experimental/ao-resolver"
           },
+          {
+            title: "AO ANT",
+            path: "/experimental/ao-ant"
+          },
         ]
       },
       // {
