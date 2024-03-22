@@ -54,6 +54,12 @@ NAMES['ardrive']
 ```
 
 
+and use that variable in other commands that need to reference any of the data.
+
+
+
+The resolve command will first check the ao-ArNS registry for any information on the name. If there is a `contractTxId` field present, it will then make a request to the ArNS smartweave contract, using the [Orbit Oracle](https://0rbit.co/), in order to try and get more information about the contract state for the underlying ANT. Then, if there is a processId field, a request will be made to that process to try and get ao specific information. This loads information into your local process at each step. For example, The first bit of information coming from the ao-Arns registry will look like this:
+
 ```js
    ardrive = {
      contractTxId = "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
@@ -69,7 +75,98 @@ NAMES['ardrive']
   }
 ```
 
-and use that variable in other commands that need to reference any of the data.
+After Orbit returns the information from the ArNS smartweave contract, that data will be added under a `contract` key:
+
+```js
+ardrive = {
+     contractTxId = "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+     contract = {
+       controller = "6Z-ifqgVi1jOwMvSNwKWs6ewUEQ0gU9eo4aHYC3rN1M",
+       ticker = "ANT-ARDRIVE",
+       name = "ArDrive.io",
+       lastUpdated = 1711118753890,
+       owner = "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ",
+       balances = {
+         QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ = 1
+      },
+       records = {
+         @ = {
+           ttlSeconds = 3600,
+           transactionId = "nOXJjj_vk0Dc1yCgdWD8kti_1iHruGzLQLNNBHVpN0Y"
+        },
+         cn = {
+           ttlSeconds = 3300,
+           transactionId = "_HquerT6pfGFXrVxRxQTkJ7PV5RciZCqvMjLtUY0C1k"
+        },
+         og = {
+           ttlSeconds = 3600,
+           transactionId = "YzD_Pm5VAfYpMD3zQCgMUcKKuleGhEH7axlrnrDCKBo"
+        },
+         logo = {
+           ttlSeconds = 3600,
+           transactionId = "KKmRbIfrc7wiLcG0zvY1etlO0NBx1926dSCksxCIN3A"
+        },
+         og_logo = {
+           ttlSeconds = 3600,
+           transactionId = "TB2wJyKrPnkAW79DAwlJYwpgdHKpijEJWQfcwX715Co"
+        },
+         dapp = {
+           ttlSeconds = 3600,
+           transactionId = "qrWdhy_PxrniBUlYn0macF-YbNgbmnmV5OVSrVRxxV8"
+        },
+         og_dapp = {
+           ttlSeconds = 3600,
+           transactionId = "5iR4wBu4KUV1pUz1YpYE1ARXSRHUT5G2ptMuoN2JDlI"
+        }
+      }
+    },
+     lastUpdated = 1711118166407,
+     record = {
+       type = "lease",
+       contractTxId = "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+       undernames = 100,
+       startTimestamp = 1694101828,
+       endTimestamp = 1711122739,
+       purchasePrice = 0
+    }
+  }
+```
+
+and an ArNS name with ao process information could look like this:
+
+```js
+blackjack = {
+     contractTxId = "ydbc4JLjKeurnbTBp15vlZX1Zz9StgfpZ7prVZOGA3I",
+     process = {
+       denomination = "1",
+       lastUpdated = 1711049563689,
+       ticker = "ANT-BlackJack",
+       name = "BlackJack",
+       logo = "Sie_26dvgyok0PZD_-iQAFOhOd5YxDTkczOLoqTTL_A",
+       owner = "cF0H0SKdnaDTqWKY9iJKBktTpdEWgb3GnlndE7ABv0Q",
+       controllers = "["iKryOeZQMONi2965nKz528htMMN_sBcjlhc-VncoRjA","w4AORX9fhPbICNgbgTzq-uLyAsut4pKw_TJSFS-K3Tc","oEy0Wkxod2DAngJby28dhyiaD150SAJLqAfFNrbbEbY"]",
+       records = {
+         @ = {
+           ttlSeconds = 3600,
+           transactionId = "Lt3pyCXSdM9R2_lxhnqj3rzzhuLszT8s-p8vM1fpeJc"
+        }
+      }
+    },
+     lastUpdated = 1711049561377,
+     processId = "Vo7O7WJ2OPlKBtudjfeOdzjcjpi_-V_RLE27VpZP8jA",
+     record = {
+       type = "lease",
+       contractTxId = "ydbc4JLjKeurnbTBp15vlZX1Zz9StgfpZ7prVZOGA3I",
+       undernames = 10,
+       processId = "Vo7O7WJ2OPlKBtudjfeOdzjcjpi_-V_RLE27VpZP8jA",
+       startTimestamp = 1710964910,
+       endTimestamp = 1742500910,
+       purchasePrice = 875
+    }
+  }
+  ```
+
+**NOTE**: Syncing data from the ArNS smartweave contract relies on the [Orbit Oracle](https://0rbit.co/). ao and Orbit are still in early development, and may not perform exactly as expected.
 
 ### Data
 
@@ -81,6 +178,18 @@ For example:
 ARNS.data('blackjack')
 ```
 would give the output `Vo7O7WJ2OPlKBtudjfeOdzjcjpi_-V_RLE27VpZP8jA`, which is the process id of an ao black jack game. The command `ARNS.data('blackjack')` can be used in place of anywhere that you would normally have to input that process id.
+
+Process Id information will be prioritized over contract information, so if an ArNS name has both, the process id will be returned instead of the contract id.
+
+#### Undernames
+
+ArNS supports undernames, which are subdomains that exist on an ArNS name. They are separated by underscores (`_`) instead of dots (`.`) like a subdomain on a traditional domain would be. the `data` method can return information about a specific undername on an ArNS name if you specify it. 
+
+```shell
+ARNS.data('dapp_ardrive')
+```
+
+will return `qrWdhy_PxrniBUlYn0macF-YbNgbmnmV5OVSrVRxxV8`, which is the transaction id for the `dapp` undername on the `ardrive` ArNS name.
 
 ### Owner
 
@@ -115,7 +224,7 @@ does not have the fields "contract" or "process", so if you tried to get `ARNS.d
 ARNS.id('ardrive')
 ```
 
-instead will get the contractTxId value from the top level, and return that value.
+instead will get the contractTxId value from the top level, and return that value. Just like with `data`, a process id is prioritized over a contract id.
 
 ### Clear
 

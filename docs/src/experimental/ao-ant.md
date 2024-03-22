@@ -33,18 +33,28 @@ If things work successfully, your aos terminal will print "undefined".
 
 Simply loading the script into your process will set variables and handlers to make your process conform to the ant standard, but you will still need to send an initiate request to add your ANT into the ao registry.
 
-### Set Controler
+### Set Controller
 
 Only authorized people can make updates to your ArNS name. Because of this, you will need to add your process ID as a 'controller' under your ArNS name at [arns.app](https://arns.app). This will give your process permissions needed to make these updates
 
-### Initiate Record Update
+### Initiate Record Sync and Update
+
+When you purchase an ArNS name on arns.app, that name is not automatically synced to the ao-ArNS registry. Anyone can initiate a sync, which loads the data of an ArNS name from the smartweave contract into the ao-ArNS registry:
+
+```shell
+Send({ Target = "COnVYFiqpycAJrFQbrKIgUEAZ1L98sF0h_26G8GxRpQ", Tags = { Action = "Initiate-Record-Sync", Name = "<ArNS-name-to-sync" }})
+```
+
+Be sure to replace `<ArNS-name-to-sync>` with the correct ArNS name. 
+
+**NOTE**: Syncing data from the ArNS smartweave contract relies on the [Orbit Oracle](https://0rbit.co/). ao and Orbit are still in early development, and may not perform exactly as expected.
 
 Once your process is a controller, and you have loaded the ANT script, you can initiate an update to the ao-ArNS registry by running the following command:
 
 ```shell
-Send({ Target = ARNS_PROCESS_ID, Tags = { Action = "Initiate-Record-Update", Name = "<your-arns-name", ProcessId = ao.id }})
+Send({ Target = ARNS_PROCESS_ID, Tags = { Action = "Initiate-Record-Update", Name = "<your-arns-name>", ProcessId = ao.id }})
 ```
 
-Make sure to change `<your-arns-name` to the ArNS name you are trying to update.
+Make sure to change `<your-arns-name` to the ArNS name you are trying to update. When you load the arns.lua script, the variable `ARNS_PROCESS_ID` is set to `COnVYFiqpycAJrFQbrKIgUEAZ1L98sF0h_26G8GxRpQ`, which is the process id of the ao-ArNS registry.
 
 Once this is done, anyone will be able to resolve your ArNS name from inside ao and have easy access to your process Id.
