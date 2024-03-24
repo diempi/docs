@@ -8,6 +8,23 @@ next: false
 
 Welcome to the documentation page for the ar.io gateway release notes. Here, you will find detailed information about each version of the ar.io gateway, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io gateway. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io gateway [change logs](https://github.com/ar-io/ar-io-node/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io gateway by referring to this page for all release-related information.
 
+## [Release 8] - 2024-03-14
+
+- **Added**
+    - Added GraphQL SQL query debug logging to support trouble-shooting and performance optimization.
+    - Added support for indexing data items (not GraphQL querying) based solely on tag name. (example use case: indexing all IPFS CID tagged data items).
+
+- **Changes**
+    - Observer data sampling now uses randomized ranges to generate content hashes.
+    - Reference gateway ArNS resolutions are now cached to improve report generation performance.
+    - Contract interactions are now tested before posting using `dryWrite` to avoid submitting interactions that would fail.
+    - `/ar-io/observer/info` now reports `INVALID` for wallets that fail to load.
+
+- **Fixed**
+    - Fix data caching failure caused by incorrect method name in `getData` circuit breakers.
+    - Fix healthcheck when `ARNS_ROOT_HOST` includes a subdomain.
+
+
 ## [Release 7] - 2024 - 02 - 14
 
 - **Added**
