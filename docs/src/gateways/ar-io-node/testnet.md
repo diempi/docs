@@ -46,33 +46,15 @@ cd testnet-contract
 yarn install
 ```
 
-### Provide Wallet Keys
+### Provide Wallet Path
 
-Joining the testnet requires signing and funding a transaction that interacts with the Testnet smart contract. This means the script needs access to your wallet. There are two ways this can be done:
+Joining the testnet requires signing and funding a transaction that interacts with the Testnet smart contract. This means the script needs access to your wallet. The easiest way to provide your wallet is to put the path to your Keyfile in your `.env` as `WALLET_FILE_PATH`
 
-1. Copy your wallet's JWK into a .env file in testnet-contract root directory.
+```js
+//.env
 
-2. Save a copy of your wallet JSON keyfile in the testnet-contract root directory as "key.json".
-
-<!-- ### Configure your settings
-
-You will need to provide some information specific to your gateway before running the join script. You can do this by opening the script file in any code or text editor. The file is located at `testnet-contract > tools > join-network.ts`
-
-Each line that needs to be edited begins with "const", followed by a variable name, and "=" sign, and its value. Each line is accompanied by a note to inform you of its purpose. The following variables MUST be changed in order to successfully join the ar.io Testnet:
-
-- **qty**: Quantity of Test IO Tokens to stake to join the Testnet. This value must be at least 10,000, and not greater than the number of Test IO tokens in your wallet.
-- **label**: A friendly label for your Gateway. There currently a 16 character limit for this value.
-- **fqdn**: Fully Qualified Domain Name - This is the domain name you have pointed at your Gateway.
-- **observerWallet**: The public address of the wallet used for Observer.
-
-There are also several variables you may edit, but are not required:
-
-- **port**: The port used to access your Gateway, defaults to 443 (https).
-- **protocol**: Set this to "http" if your Gateway is not configured to allow https connections.
-- **properties**: This variable allows you to reference the TxId of any additional Gateway settings you've previously uploaded to Arweave. While we'll provide more detailed instructions and schema for doing so soon, it's safe to leave this unchanged for the time being.
-- **note**: A note containing additional information you would like known about your Gateway.
-
-These settings can be updated after joining the Testnet. -->
+WALLET_FILE_PATH=<path/to/wallet>
+```
 
 ### Run the Script
 
