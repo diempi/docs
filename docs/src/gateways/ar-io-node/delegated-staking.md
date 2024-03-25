@@ -44,11 +44,17 @@ yarn install
 
 ## Providing Wallet
 
-In order to update your gateway settings, you need to run the script using the wallet associated with your gateway. You can provide this wallet by saving a keyfile in the testnet-contract repo, and name the file `key.json`.
+In order to update your gateway settings, you need to run the script using the wallet associated with your gateway. The easiest way to provide your wallet is to put the path to your Keyfile in your `.env` as `WALLET_FILE_PATH`
 
-You will need a small amount of AR in this wallet, in addition to the IO tokens, in order to pay for the contract interaction.
+You will need a small amount of AR in this wallet in order to pay for the contract interaction.
 
-## Editing the Script
+```js
+//.env
+
+WALLET_FILE_PATH=<path/to/wallet>
+```
+
+<!-- ## Editing the Script
 
 You will need to edit the script to give it the correct information for when it runs. You can do this by opening the file, located at `testnet-contract > tools > update-gateway-settings.ts` in any code or text editor. Once you have the file open, you will need to look for these lines:
 
@@ -134,14 +140,28 @@ When you are done, that section should look like this:
       disableBundling: true,
     },
   );
-  ```
+  ``` -->
 
 ## Running the Script
 
-Once the above is set all that is left is to run the script. This can be done with a single command in your terminal. 
+Once the repo is installed and your wallet is provided, all that is left is to run the script. This can be done with a single command in your terminal. 
 
 Make sure your terminal is in the root folder of the testnet-contract repo (the one named 'testnet-contract'), and run this command:
 
 ```bash
-yarn ts-node tools/update-gateway-settings.ts
+yarn update-gateway-settings
 ```
+
+You will be prompted in your terminal for the values of various settings on your gateway. The default value for each prompt will be your current setting, so if you don't want to change something, simply press `ENTER` to move to the next prompt.
+
+- **Enter your a friendly name for your gateway**: This is a name or `label` for your gateway. 
+- **Enter your domain for this gateway**: This is the domain name for your gateway. It should be the full domain, without any protocol ("http/https") prefix. For example: "vilenarios.com".
+- **Enter port used for this gateway**: The primary access port people should use to access your gateway. Except for some advanced use cases, this value should be 443.
+- **Enter protocol used for this gateway**: http or https. Most users will want to use https.
+- **Enter gateway properties transaction ID (use default if not sure)**: Arweave TxId for your gateway properties setting. This is not a widely implemented feature yet, so most people will just press `ENTER` to accept the default value.
+- **Enter short note to further describe this gateway**: A short description of your gateway. Must be 256 characters or less.
+- **Enter the observer wallet public address**: The public wallet address being used for your Observer. It will default to the wallet being used to join the network.
+- **Enable or disable delegated staking?**: Do you want to allow people to stake tokens on your gateway? `y` for yes or `n` for no.
+- **Enter the percent of gateway and observer rewards given to delegates**: What percentage of your gateway rewards do you want to give to your delegated stakers? Defaults to 10%.
+- **Enter the minimum  delegate stake for this gateway (in IO)**: The minimum number of tokens a person has to stake to delegate to your gateway. Defaults to 100.
+- **CONFIRM GATEWAY DETAILS?**: This is your last chance to review all of your settings before submitting the transaction. `y` to confirm and submit, `n` to cancel.
