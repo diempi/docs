@@ -230,3 +230,15 @@ instead will get the contractTxId value from the top level, and return that valu
 
 `ARNS.clear` will reset your `NAMES` table, emptying your locally saved cache of ARNS data.
 
+### Sync
+
+When someone purchases an ArNS name on arns.app, that name is not automatically synced to the ao-ArNS registry. Anyone can initiate a sync, which loads the data of an ArNS name from the smartweave contract into the ao-ArNS registry:
+
+```shell
+Send({ Target = "COnVYFiqpycAJrFQbrKIgUEAZ1L98sF0h_26G8GxRpQ", Tags = { Action = "Initiate-Record-Sync", Name = "<ArNS-name-to-sync>" }})
+```
+
+Be sure to replace `<ArNS-name-to-sync>` with the correct ArNS name. 
+
+**NOTE**: Syncing data from the ArNS smartweave contract relies on the [Orbit Oracle](https://0rbit.co/). ao and Orbit are still in early development, and may not perform exactly as expected.
+
