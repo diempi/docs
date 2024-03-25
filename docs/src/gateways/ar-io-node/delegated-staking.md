@@ -161,6 +161,7 @@ You will be prompted in your terminal for the values of various settings on your
 - **Enter gateway properties transaction ID (use default if not sure)**: Arweave TxId for your gateway properties setting. This is not a widely implemented feature yet, so most people will just press `ENTER` to accept the default value.
 - **Enter short note to further describe this gateway**: A short description of your gateway. Must be 256 characters or less.
 - **Enter the observer wallet public address**: The public wallet address being used for your Observer. It will default to the wallet being used to join the network.
+- **Enable or disable auto staking?**: If yes, rewards will automatically be staked on your gateway instead of going to your wallet.
 - **Enable or disable delegated staking?**: Do you want to allow people to stake tokens on your gateway? `y` for yes or `n` for no.
 - **Enter the percent of gateway and observer rewards given to delegates**: What percentage of your gateway rewards do you want to give to your delegated stakers? Defaults to 10%.
 - **Enter the minimum  delegate stake for this gateway (in IO)**: The minimum number of tokens a person has to stake to delegate to your gateway. Defaults to 100.
