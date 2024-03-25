@@ -45,11 +45,18 @@ yarn install
 
 ## Providing Wallet
 
-In order to send tokens to be staked, you will need to use a wallet that has IO tokens in it. You can provide this wallet by saving a keyfile in the testnet-contract repo, and name the file `key.json`.
+In order to send tokens to be staked, you will need to use a wallet that has IO tokens in it.  The easiest way to provide your wallet is to put the path to your Keyfile in your `.env` as `WALLET_FILE_PATH`.
 
 You will need a small amount of AR in this wallet, in addition to the IO tokens, in order to pay for the contract interaction.
 
-## Editing the script
+
+```js
+//.env
+
+WALLET_FILE_PATH=<path/to/wallet>
+```
+
+<!-- ## Editing the script
 
 You can set the number of tokens you want to stake, and the gateway where you want to stake them, by editing the file for the script. The script is located at `testnet-contract > tools > delegate-stake.ts`.
 
@@ -71,43 +78,31 @@ This line sets the target gateway where you want to stake the tokens. Replace th
 
 You can find the wallet address of a gateway by going to `https://<gateway-domain-name>/ar-io/info`.
 
-Save and exit your editor.
+Save and exit your editor. -->
 
 ## Running the Script
 
-Once the above is set all that is left is to run the script. This can be done with a single command in your terminal. 
+Once the repo is installed and your wallet is provided, all that is left is to run the script. This can be done with a single command in your terminal. 
 
 Make sure your terminal is in the root folder of the testnet-contract repo (the one named 'testnet-contract'), and run this command:
 
 ```bash
-yarn ts-node tools/delegate-stake.ts
+yarn delegate-stake
 ```
+
+You will be prompted in your terminal for the number of tokens you want to stake, and the wallet address of the target gateway.
 
 ## Withdrawing Stake
 
-If you want to take your staked tokens out of a gateway, the process is very similar. You will be editing and running the `decrease-delegate-stake.ts` file instead of the `delegate-stake.ts` file.
+If you want to take your staked tokens out of a gateway, the process is very similar. You will be running the `decrease-delegate-stake` script instead of the `delegate-stake` script.
 
-The structures of bot files are similar, and there are only the same two lines to edit:
-
-```ts
-const qty = 500;
+```bash
+yarn decrease-delegate-stake
 ```
 
-This line represents the number of tokens you want to remove from staking.
-
-```ts
-  const target = 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ';
-```
-
-This line represents the address of the gateway you want to withdraw from.
+You will again be prompted for the number of tokens you want to withdraw and the wallet address of the gateway you want to withdraw from.
 
 Only the wallet that owns the staked tokens can withdraw, so make sure you are using the same wallet to run the script as you used to stake the tokens initially.
 
-Run the script in the same way you ran the staking script, being sure to use the decrease file and not the staking file.
-
-```bash
-yarn ts-node tools/decrease-delegate-stake.ts
-```
-
-Token withdrawals are not instant, and there is a period where the tokens will remain unavailable after you run the script. The length of this hold may vary a bit during testnet while optimal times are iterated upon.
+**NOTE**: Token withdrawals are not instant, and there is a period where the tokens will remain unavailable after you run the script. The length of this hold may vary a bit during testnet while optimal times are iterated upon.
 
