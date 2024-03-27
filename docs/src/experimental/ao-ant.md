@@ -42,7 +42,7 @@ Only authorized people can make updates to your ArNS name. Because of this, you 
 When you purchase an ArNS name on arns.app, that name is not automatically synced to the ao-ArNS registry. Anyone can initiate a sync, which loads the data of an ArNS name from the smartweave contract into the ao-ArNS registry:
 
 ```shell
-Send({ Target = "COnVYFiqpycAJrFQbrKIgUEAZ1L98sF0h_26G8GxRpQ", Tags = { Action = "Initiate-Record-Sync", Name = "<ArNS-name-to-sync>" }})
+Send({ Target = "TyduW6spZTr3gkdIsdktduJhgtilaR_ex5JukK8gI9o", Tags = { Action = "Initiate-Record-Sync", Name = "<ArNS-name-to-sync>" }})
 ```
 
 Be sure to replace `<ArNS-name-to-sync>` with the correct ArNS name. 
@@ -55,6 +55,6 @@ Once your process is a controller, and you have loaded the ANT script, you can i
 Send({ Target = ARNS_PROCESS_ID, Tags = { Action = "Initiate-Record-Update", Name = "<your-arns-name>", ProcessId = ao.id }})
 ```
 
-Make sure to change `<your-arns-name` to the ArNS name you are trying to update. When you load the arns.lua script, the variable `ARNS_PROCESS_ID` is set to `COnVYFiqpycAJrFQbrKIgUEAZ1L98sF0h_26G8GxRpQ`, which is the process id of the ao-ArNS registry.
+Make sure to change `<your-arns-name` to the ArNS name you are trying to update. When you load the arns.lua script, the variable `ARNS_PROCESS_ID` is set to `TyduW6spZTr3gkdIsdktduJhgtilaR_ex5JukK8gI9o`, which is the process id of the ao-ArNS registry.
 
 Once this is done, anyone will be able to resolve your ArNS name from inside ao and have easy access to your process Id.
