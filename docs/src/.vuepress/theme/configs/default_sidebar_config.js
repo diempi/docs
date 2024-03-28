@@ -196,4 +196,8 @@ module.exports = [
     title: "Community Resources",
     path: "/community-resources",
   },
+  {
+    title: "SDK",
+    path: "/guides/sdk"
+  },
 ];
