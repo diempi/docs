@@ -67,7 +67,7 @@ module.exports = {
     fontFamily: {
       base: ["Dancing Script", "cursive"],
     },
-    searchPlaceholder: "Search",
+    searchPlaceholder: "Ctrl + K",
     repo: "",
     editLinks: false,
     docsDir: "",

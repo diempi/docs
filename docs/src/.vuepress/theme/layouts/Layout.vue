@@ -139,18 +139,44 @@ export default {
   },
 
   mounted() {
+    this.setupKeyboardShortcuts();
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
     });
     this.updateTheme();
   },
 
+  beforeDestroy() {
+    // Cleanup event listener when component is destroyed
+    window.removeEventListener('keydown', this.handleKeyDown);
+  },
+
   methods: {
+
+    setupKeyboardShortcuts() {
+      this.handleKeyDown = (event) => {
+        // Check for 'Ctrl+K' or 'Cmd+K'
+        if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+          event.preventDefault(); // Prevent default behavior
+
+          // Check if modal is already open and toggle accordingly
+          if (this.showSearchModal) {
+            this.closeSearchModal();
+          } else {
+            this.openSearchModal();
+          }
+        }
+      };
+
+      window.addEventListener('keydown', this.handleKeyDown);
+    },
     openSearchModal() {
       this.$store.commit("openSearchModal");
+      this.showSearchModal = true
     },
     closeSearchModal() {
       console.log("close modal");
+      this.showSearchModal = false
       this.$store.commit("closeSearchModal");
     },
 

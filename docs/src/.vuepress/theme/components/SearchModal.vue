@@ -62,14 +62,15 @@ export default {
     // Assuming `allPages` and `options` are accessible or can be derived at this point
     const allPages = this.$site.pages; // Or however you get all pages data
     const options = {}; // Define your options if any
-
+    
     // Build the search index
     flexsearchSvc.buildIndex(allPages, options);
   },
 
   computed: {
     searchPlaceholder() {
-      return this.$site.themeConfig.searchPlaceholder || "";
+      // return this.$site.themeConfig.searchPlaceholder || "";
+      return "Search"
     },
 
     showSuggestions() {
