@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import matchQuery from "./search-dependencies/match-query";
+// import matchQuery from "./search-dependencies/matchQuery";
+import flexsearchSvc from "./search-dependencies/flexsearchSvc";
 
-/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {
   name: "SearchModal",
 
@@ -54,7 +54,17 @@ export default {
       query: "",
       focused: false,
       focusIndex: 0,
+      suggestions: [], // Moved here from computed
     };
+  },
+
+  async created() {
+    // Assuming `allPages` and `options` are accessible or can be derived at this point
+    const allPages = this.$site.pages; // Or however you get all pages data
+    const options = {}; // Define your options if any
+
+    // Build the search index
+    flexsearchSvc.buildIndex(allPages, options);
   },
 
   computed: {
@@ -66,51 +76,6 @@ export default {
       return this.focused && this.suggestions && this.suggestions.length;
     },
 
-    suggestions() {
-      const query = this.query.trim().toLowerCase();
-      if (!query) {
-        return;
-      }
-
-      const { pages } = this.$site;
-      const max =
-        this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS;
-      const localePath = this.$localePath;
-      const res = [];
-      for (let i = 0; i < pages.length; i++) {
-        if (res.length >= max) break;
-        const p = pages[i];
-        // filter out results that do not match current locale
-        if (this.getPageLocalePath(p) !== localePath) {
-          continue;
-        }
-
-        // filter out results that do not match searchable paths
-        if (!this.isSearchable(p)) {
-          continue;
-        }
-
-        if (matchQuery(query, p)) {
-          res.push(p);
-        } else if (p.headers) {
-          for (let j = 0; j < p.headers.length; j++) {
-            if (res.length >= max) break;
-            const h = p.headers[j];
-            if (h.title && matchQuery(query, p, h.title)) {
-              res.push(
-                Object.assign({}, p, {
-                  path: p.path + "#" + h.slug,
-                  header: h,
-                })
-              );
-            }
-          }
-        }
-      }
-      return res;
-    },
-
-    // make suggestions align right when there are not enough items
     alignRight() {
       const navCount = (this.$site.themeConfig.nav || []).length;
       const repo = this.$site.repo ? 1 : 0;
@@ -118,21 +83,35 @@ export default {
     },
   },
 
-  mounted() {
-    this.placeholder = this.$site.themeConfig.searchPlaceholder || "";
-    document.addEventListener("keydown", this.onHotkey);
-    document.addEventListener("keydown", this.onEscapeKey);
-    this.$refs.input.focus();
-    document.addEventListener("click", this.handleDocumentClick);
-  },
-
-  beforeDestroy() {
-    document.removeEventListener("keydown", this.onHotkey);
-    document.removeEventListener("click", this.handleDocumentClick);
-    document.removeEventListener("keydown", this.onEscapeKey);
+  watch: {
+    async query(newQuery) {
+      if (newQuery.length > 2) {
+        await this.fetchSuggestions();
+      } else {
+        this.suggestions = [];
+      }
+    },
   },
 
   methods: {
+
+    async fetchSuggestions() {
+      const query = this.query.trim().toLowerCase();
+      if (!query) {
+        this.suggestions = [];
+        return;
+      }
+
+      const results = await flexsearchSvc.match(query, query.split(/\s+/));
+      this.suggestions = results.map((result) => {
+        return {
+          title: result.title,
+          path: result.path,
+          header: result.header,
+        };
+      });
+    },
+    
     onEscapeKey(event) {
       if (event.key === "Escape" || event.keyCode === 27) {
         this.$emit("close-modal");
