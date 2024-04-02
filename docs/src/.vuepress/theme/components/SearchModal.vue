@@ -84,6 +84,14 @@ export default {
     },
   },
 
+  mounted() {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || "";
+    document.addEventListener("keydown", this.onHotkey);
+    document.addEventListener("keydown", this.onEscapeKey);
+    this.$refs.input.focus();
+    document.addEventListener("click", this.handleDocumentClick);
+  },
+
   watch: {
     async query(newQuery) {
       if (newQuery.length > 2) {
