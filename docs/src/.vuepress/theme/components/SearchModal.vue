@@ -58,18 +58,10 @@ export default {
     };
   },
 
-  async created() {
-    // Assuming `allPages` and `options` are accessible or can be derived at this point
-    const allPages = this.$site.pages; // Or however you get all pages data
-    const options = {}; // Define your options if any
-
-    // Build the search index
-    flexsearchSvc.buildIndex(allPages, options);
-  },
-
   computed: {
     searchPlaceholder() {
-      return this.$site.themeConfig.searchPlaceholder || "";
+      // return this.$site.themeConfig.searchPlaceholder || "";
+      return "Search";
     },
 
     showSuggestions() {
@@ -83,9 +75,17 @@ export default {
     },
   },
 
+  mounted() {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || "";
+    document.addEventListener("keydown", this.onHotkey);
+    document.addEventListener("keydown", this.onEscapeKey);
+    this.$refs.input.focus();
+    document.addEventListener("click", this.handleDocumentClick);
+  },
+
   watch: {
     async query(newQuery) {
-      if (newQuery.length > 2) {
+      if (newQuery.length >= 2) {
         await this.fetchSuggestions();
       } else {
         this.suggestions = [];
@@ -94,7 +94,6 @@ export default {
   },
 
   methods: {
-
     async fetchSuggestions() {
       const query = this.query.trim().toLowerCase();
       if (!query) {
@@ -111,7 +110,7 @@ export default {
         };
       });
     },
-    
+
     onEscapeKey(event) {
       if (event.key === "Escape" || event.keyCode === 27) {
         this.$emit("close-modal");
