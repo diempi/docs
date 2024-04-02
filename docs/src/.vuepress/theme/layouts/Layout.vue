@@ -26,11 +26,9 @@
         <slot name="sidebar-bottom" />
       </template>
     </Sidebar>
-      <slot></slot>
-      
-    <Home v-if="$page.frontmatter.home" />
+    <slot></slot>
 
-    
+    <Home v-if="$page.frontmatter.home" />
 
     <Page v-else :sidebar-items="sidebarItems" :isLight="isLight">
       <template #top>
@@ -52,6 +50,7 @@ import Sidebar from "@theme/components/Sidebar.vue";
 import { resolveSidebarItems } from "../util";
 import SearchModal from "../components/SearchModal.vue";
 import Footer from "../components/Footer.vue";
+import flexsearchSvc from "../components/search-dependencies/flexsearchSvc";
 
 export default {
   name: "Layout",
@@ -146,17 +145,24 @@ export default {
     this.updateTheme();
   },
 
+  async created() {
+    // Assuming `allPages` and `options` are accessible or can be derived at this point
+    const allPages = this.$site.pages; // Or however you get all pages data
+    const options = {}; // Define your options if any
+
+    // Build the search index
+    flexsearchSvc.buildIndex(allPages, options);
+  },
   beforeDestroy() {
     // Cleanup event listener when component is destroyed
-    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener("keydown", this.handleKeyDown);
   },
 
   methods: {
-
     setupKeyboardShortcuts() {
       this.handleKeyDown = (event) => {
         // Check for 'Ctrl+K' or 'Cmd+K'
-        if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        if ((event.ctrlKey || event.metaKey) && event.key === "k") {
           event.preventDefault(); // Prevent default behavior
 
           // Check if modal is already open and toggle accordingly
@@ -168,15 +174,15 @@ export default {
         }
       };
 
-      window.addEventListener('keydown', this.handleKeyDown);
+      window.addEventListener("keydown", this.handleKeyDown);
     },
     openSearchModal() {
       this.$store.commit("openSearchModal");
-      this.showSearchModal = true
+      this.showSearchModal = true;
     },
     closeSearchModal() {
       console.log("close modal");
-      this.showSearchModal = false
+      this.showSearchModal = false;
       this.$store.commit("closeSearchModal");
     },
 
@@ -202,7 +208,10 @@ export default {
       document.documentElement.style.setProperty("--InLineCodeText", CodeColor);
       document.documentElement.style.setProperty("--InLineCodeBG", CodeBG);
       document.documentElement.style.setProperty("--LinkColor", LinkColor);
-      document.documentElement.style.setProperty("--HomePageLinkColor", HomePageLinkColor)
+      document.documentElement.style.setProperty(
+        "--HomePageLinkColor",
+        HomePageLinkColor
+      );
     },
 
     toggleSidebar(to) {
