@@ -121,6 +121,7 @@ export default {
       const modalOuter = this.$refs.modalOuter;
       const modalProper = this.$refs.modalProper;
       if (
+        modalOuter &&
         modalOuter.contains(event.target) &&
         !modalProper.contains(event.target)
       ) {
