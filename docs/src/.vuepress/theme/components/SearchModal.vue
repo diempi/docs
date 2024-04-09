@@ -32,7 +32,7 @@
           <a :href="s.path" @click.prevent>
             <span class="page-title">{{ s.title || s.path }}</span>
             <span v-if="s.header" class="header"
-              >&gt; {{ s.header.title }}</span
+              >&gt; {{ s.header }}</span
             >
           </a>
         </li>
@@ -105,8 +105,8 @@ export default {
       this.suggestions = results.map((result) => {
         return {
           title: result.title,
-          path: result.path,
-          header: result.header,
+          path: result.path + result.slug,
+          header: result.headingStr,
         };
       });
     },
@@ -221,6 +221,13 @@ input:focus
   outline none
 
 
+.suggestion:hover
+  color: var(--AccentColor) 
+  a 
+    color: var(--AccentColor) 
+    span
+      color: var(--AccentColor) 
+
 .search-modal
   position fixed
   top 0
@@ -274,6 +281,8 @@ input:focus
     background-color var(--LineColor)
     border 1px solid var(--AccentColor) !important
     cursor pointer
+    span
+     color var(--AccentColor)
 
 .search-modal-content li:last-child
   border-bottom none
