@@ -24,7 +24,7 @@ export default {
         // here you choose the fields you want to index.
         // for me I will search in the title and the content of each page.
         // of course I stripped the content before so I use the plain text content not the markdown text
-        field: ['title', 'headersStr', 'content'],
+        field: ['title', 'header', 'headersStr', 'content'],
       },
     }
     index = new Flexsearch(indexSettings)
