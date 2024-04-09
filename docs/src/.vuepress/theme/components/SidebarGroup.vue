@@ -84,7 +84,7 @@ export default {
 <style lang="stylus">
 span
   &:hover
-    color var(--AccentColor) !important
+    color var(--AccentColor)
 .sidebar-group
   .sidebar-group
     padding-left 0.5em

@@ -34,6 +34,7 @@
             <span v-if="s.header" class="header"
               >&gt; {{ s.header }}</span
             >
+            <span v-if="s.contentStr && s.contentHighlight" class="content-snippet" v-html="highlightSnippet(s)"></span>
           </a>
         </li>
       </ul>
@@ -94,6 +95,17 @@ export default {
   },
 
   methods: {
+    highlightSnippet(s) {
+      // console.log(s.contentStr)
+      const start = s.contentHighlight[0];
+      const end = start + s.contentHighlight[1];
+      const before = s.contentStr.slice(0, start);
+      const match = s.contentStr.slice(start, end);
+      const after = s.contentStr.slice(end);
+
+      return `${before}<span class="highlight">${match}</span>${after}`;
+    },
+
     async fetchSuggestions() {
       const query = this.query.trim().toLowerCase();
       if (!query) {
@@ -102,11 +114,14 @@ export default {
       }
 
       const results = await flexsearchSvc.match(query, query.split(/\s+/));
+      // console.log(results)
       this.suggestions = results.map((result) => {
         return {
           title: result.title,
           path: result.path + result.slug,
           header: result.headingStr,
+          contentStr: result.contentStr,
+          contentHighlight: result.contentHighlight
         };
       });
     },
@@ -220,13 +235,26 @@ input:focus
   border 2px solid var(--AccentColor) !important
   outline none
 
+.search-modal-content .content-snippet
+  display: block
+  margin-top: 0.5em
+  white-space: pre-wrap
+  color: var(--TextColor)
+
+.highlight
+  text-decoration: underline
+  color: var(--AccentColor)
+
 
 .suggestion:hover
   color: var(--AccentColor) 
   a 
     color: var(--AccentColor) 
-    span
+    span:not(.content-snippet)
       color: var(--AccentColor) 
+    .content-snippet
+       color: var(--TextColor) !important
+
 
 .search-modal
   position fixed
