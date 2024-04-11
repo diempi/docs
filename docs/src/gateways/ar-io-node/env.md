@@ -142,37 +142,37 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>The public wallet address of the wallet being used to sign report upload transactions for Observer</td>
         </tr>
         <tr>
-            <td>CHUNKS_DATA_PATH</td>
+            <th>CHUNKS_DATA_PATH</th>
             <td>string</td>
             <td>"data/chunks"</td>
             </td>Sets the location for chunked data to be saved. If omitted, chunked data will be stored in the `data` directory</td>
         </tr> 
         <tr>
-            <td>CONTIGUOUS_DATA_PATH</td>
+            <th>CONTIGUOUS_DATA_PATH</th>
             <td>string</td>
             <td>"data/contiguous"</td>
             </td>Sets the location for contiguous data to be saved. If omitted, contiguous data will be stored in the `data` directory</td>
         </tr> 
         <tr>
-            <td>HEADERS_DATA_PATH</td>
+            <th>HEADERS_DATA_PATH</th>
             <td>string</td>
             <td>"data/headers"</td>
             </td>Sets the location for header data to be saved. If omitted, header data will be stored in the `data` directory</td>
         </tr> 
         <tr>
-            <td>SQLITE_DATA_PATH</td>
+            <th>SQLITE_DATA_PATH</th>
             <td>string</td>
             <td>"data/sqlite"</td>
             </td>Sets the location for sqlite indexed data to be saved. If omitted, sqlite data will be stored in the `data` directory</td>
         </tr>
         <tr>
-            <td>TEMP_DATA_PATH</td>
+            <th>TEMP_DATA_PATH</th>
             <td>string</td>
             <td>"data/tmp"</td>
             </td>Sets the location for temporary data to be saved. If omitted, temporary data will be stored in the `data` directory</td>
         </tr>
         <tr>
-            <td>LMDB_DATA_PATH</td>
+            <th>LMDB_DATA_PATH</th>
             <td>string</td>
             <td>"data/LMDB"</td>
             </td>Sets the location for LMDB data to be saved. If omitted, LMDB data will be stored in the `data` directory</td>
@@ -212,6 +212,36 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>Boolean</td>
             <td>true</td>
             <td>If true, Observer will submit its generated reports to the ar.io Network. If false, reports will be generated but not submitted</td>
+        </tr>
+        <tr>
+            <th>REDIS_MAX_MEMORY</th>
+            <td>String</td>
+            <td>256mb</td>
+            <td>Sets the max memory allocated to Redis</td>
+        </tr>
+        <tr>
+            <th>REDIS_EXTRA_FLAGS</th>
+            <td>String</td>
+            <td>--save "" --appendonly no</td>
+            <td>Additional CLI flags passed to Redis</td>
+        </tr>
+        <tr>
+            <th>WEBHOOK_TARGET_SERVERS</th>
+            <td>String</td>
+            <td>undefined</td>
+            <td>Target servers for webhooks</td>
+        </tr>
+        <tr>
+            <th>WEBHOOK_INDEX_FILTER</th>
+            <td>String</td>
+            <td>{"never": true}</td>
+            <td>Only emit webhooks for transactions and data items compliant with this filter</td>
+        </tr>
+        <tr>
+            <th>CONTIGUOUS_DATA_CACHE_CLEANUP_THRESHOLD</th>
+            <td>Number</td>
+            <td>undefined</td>
+            <td>Sets the age threshold in sends; files older than this are candidates for contiguous data cache cleanup</td>
         </tr>
     </table>
 </div>
