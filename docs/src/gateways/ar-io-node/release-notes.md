@@ -8,6 +8,14 @@ next: false
 
 Welcome to the documentation page for the ar.io gateway release notes. Here, you will find detailed information about each version of the ar.io gateway, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io gateway. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io gateway [change logs](https://github.com/ar-io/ar-io-node/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io gateway by referring to this page for all release-related information.
 
+## [Release 9] - 2024-04-10
+
+- **Added**
+    - Added experimental Farcaster Frames support, enabling simple Arweave based Frames with button navigation. Transaction and data item data is now served under `/local/farcaster/frame/<ID>`. `/local` is used as a prefix to indicate this functionality is both experimental and local to a particular gateway rather than part of the global gateway API. Both GET and POST requests are supported.
+    - Added an experimental local ArNS resolver. When enabled it removes dependence on arweave.net for ArNS resolution! Enable it by setting `RUN_RESOLVER=TRUE`, `TRUSTED_ARNS_RESOLVER_TYPE=resolver`, and `TRUSTED_ARNS_RESOLVER_URL=http://resolver:6000` in your `.env` file.
+    - Added an `X-Cached` header to data responses to indicate when data is served from the local cache rather than being retrieved from an external source. This is helpful for interfacing with external systems, debugging, and end-to-end testing.
+    - Save hashes for unbundled data items during indexing. This enables reduction in data storage via hash based deduplication as well as more efficient peer-to-peer data retrieval in the future.
+
 ## [Release 8] - 2024-03-14
 
 - **Added**
