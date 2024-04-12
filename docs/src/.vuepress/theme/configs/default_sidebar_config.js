@@ -74,7 +74,7 @@ module.exports = [
       },
       {
         title: "Delegated Staking",
-        path: "/gateways/ar-io-node/delegated-staking"
+        path: "/gateways/ar-io-node/delegated-staking",
       },
       {
         title: "Environmental Variables",
@@ -103,6 +103,15 @@ module.exports = [
       {
         title: "Release Notes",
         path: "/gateways/ar-io-node/release-notes",
+      },
+      {
+        title: "Experimental",
+        children: [
+          {
+            title: "Farcaster Frames",
+            path: "/gateways/ar-io-node/experimental/frames",
+          },
+        ],
       },
     ],
   },
@@ -171,20 +180,20 @@ module.exports = [
       },
       {
         title: "Delegated Staking",
-        path: "/guides/delegated-staking"
+        path: "/guides/delegated-staking",
       },
       {
         title: "Experimental",
         children: [
           {
             title: "AO ArNS Resolver",
-            path: "/experimental/ao-resolver"
+            path: "/experimental/ao-resolver",
           },
           {
             title: "AO ANT",
-            path: "/experimental/ao-ant"
+            path: "/experimental/ao-ant",
           },
-        ]
+        ],
       },
       // {
       //   title: "Contribute to Docs",
