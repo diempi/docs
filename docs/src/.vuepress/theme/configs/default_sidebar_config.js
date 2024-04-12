@@ -104,15 +104,6 @@ module.exports = [
         title: "Release Notes",
         path: "/gateways/ar-io-node/release-notes",
       },
-      {
-        title: "Experimental",
-        children: [
-          {
-            title: "Farcaster Frames",
-            path: "/gateways/ar-io-node/experimental/frames",
-          },
-        ],
-      },
     ],
   },
   // {
@@ -192,6 +183,10 @@ module.exports = [
           {
             title: "AO ANT",
             path: "/experimental/ao-ant",
+          },
+          {
+            title: "Farcaster Frames",
+            path: "/gateways/ar-io-node/experimental/frames",
           },
         ],
       },
