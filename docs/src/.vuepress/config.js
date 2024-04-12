@@ -10,8 +10,6 @@ module.exports = {
   title: "ar.io Docs",
   base: base,
 
-
-
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -23,6 +21,14 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/config/#head
    */
   head: [
+    [
+      "meta",
+      {
+        property: "og:image",
+        content:
+          "https://res.cloudinary.com/dopbvlqgc/image/upload/v1706802732/ario_v2nv53.png",
+      },
+    ],
     ["meta", { name: "theme-color", content: "#3eaf7c" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     [
