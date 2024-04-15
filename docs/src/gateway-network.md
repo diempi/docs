@@ -127,6 +127,26 @@ It is important to note that unlike other protocols, the IO token is non-inflati
             <td>object</td>
             <td class="align-left">Additional configuration settings for the Gateway, <a href="#gateway-settings">view schema</a>.</td>
         </tr>
+        <tr>
+            <th>delegates</th>
+            <td>object</td>
+            <td class="align-left">Wallets that have delegated a stake of IO tokens to the Gateway.</td>
+        </tr>
+        <tr>
+            <th>totalDelegatedStake</th>
+            <td>number</td>
+            <td class="align-left">The total number of IO tokens delegated to the Gateway</td>
+        </tr>
+        <tr>
+            <th>observerWallet</th>
+            <td>string</td>
+            <td class="align-left">The public address for the wallet being used to sign and upload Observer reports</td>
+        </tr>
+        <tr>
+            <th>stats</th>
+            <td>object</td>
+            <td class="align-left">Information about the Gateways Network performance</td>
+        </tr>
     </table>
 </div>
 
@@ -210,10 +230,22 @@ It is important to note that unlike other protocols, the IO token is non-inflati
             <td class="align-left">An Arweave transaction ID containing additional notes the Gateway operator can set to include things like announcements, maintenance, or other operational updates.</td>
         </tr>
         <tr>
-            <th>observerWallet</th>
-            <td>string</td>
-            <td>yes</td>
-            <td>The public address for the wallet being used to sign and upload Observer reports</td>
+            <th>allowDelegatedStaking</th>
+            <td>boolean</td>
+            <td>no</td>
+            <td class="align-left">The Gateway Operator can allow or disallow other wallets to stake IO tokens on the Gateway.</td>
+        </tr>
+        <tr>
+            <th>delegatedRewardShareRatio</th>
+            <td>number</td>
+            <td>no</td>
+            <td class="align-left">The percentage of Gateway rewards given to delegated stakers</td>
+        </tr>
+        <tr>
+            <th>autoStake</th>
+            <td>boolean</td>
+            <td>no</td>
+            <td class="align-left">If true, Gateway rewards will automatically be added to the Gateway's Operator stake</td>
         </tr>
     </table>
 </div>
