@@ -29,6 +29,18 @@ module.exports = {
           "https://res.cloudinary.com/dopbvlqgc/image/upload/v1706802732/ario_v2nv53.png",
       },
     ],
+    ["meta", {
+      name: "twitter:card",
+      content: "summary_large_image"
+    }],
+    ["meta", {
+      name: "twitter:image",
+      content: "https://res.cloudinary.com/dopbvlqgc/image/upload/v1706802732/ario_v2nv53.png"
+    }],
+    ["meta", {
+      name: "twitter:site",
+      content: "@ar_io_network"  // Replace with your or your site's Twitter handle
+    }],
     ["meta", { name: "theme-color", content: "#3eaf7c" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     [
