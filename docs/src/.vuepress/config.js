@@ -30,7 +30,7 @@ module.exports = {
         name: "twitter:title",
         content: "ar.io Docs Portal"  // Ensure this matches your page title
       }]
-    ]
+    ],
     [
       "meta",
       {
