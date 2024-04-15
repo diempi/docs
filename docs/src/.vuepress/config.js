@@ -22,6 +22,16 @@ module.exports = {
    */
   head: [
     [
+      ["meta", {
+        property: "og:title",
+        content: "ar.io Docs Portal"  // Replace 'Your Page Title' with the actual title of the page
+      }],
+      ["meta", {
+        name: "twitter:title",
+        content: "ar.io Docs Portal"  // Ensure this matches your page title
+      }]
+    ]
+    [
       "meta",
       {
         property: "og:image",
