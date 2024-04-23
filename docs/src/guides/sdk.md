@@ -195,7 +195,6 @@ const balances = arIO.getBalances();
   "-4xgjroXENKYhTWqrBo57HQwvDL51mMvSxJy6Y2Z_sA": 5000,
   "-7vXsQZQDk8TMDlpiSLy3CnLi5PDPlAaN2DaynORpck": 5000,
   "-9JU3W8g9nOAB1OrJQ8FxkaWCpv5slBET2HppTItbmk": 5000,
-  ...
 }
 ```
 </details>
@@ -308,7 +307,6 @@ Retrieves the record info of the specified ArNS name.
 ```typescript
 const arIO = ArIO.init();
 const record = arIO.getArNSRecord({ domain: 'ardrive' });
-
 ```
 
 <details><summary>outputs</summary>
@@ -351,7 +349,6 @@ const records = arIO.getArNSRecords();
     "type": "permabuy",
     "undernames": 10
   }
-  ...
 }
 ```
 </details>
@@ -373,6 +370,7 @@ const observations = await arIO.getObservations();
       "failureSummaries": {
         "-Tk2DDk8k4zkwtppp_XFKKI5oUgh6IEHygAoN7mD-w8": [
         ...
+        ],
      "reports": {
         "IPdwa3Mb_9pDD8c2IaJx6aad51Ss-_TfStVwBuhtXMs": "B6UUjKWjjEWDBvDSMXWNmymfwvgR9EN27z5FTkEVlX4",
         "Ie2wEEUDKoU26c7IuckHNn3vMFdNQnMvfPBrFzAb3NA": "7tKsiQ2fxv0D8ZVN_QEv29fZ8hwFIgHoEDrpeEG0DIs",
@@ -500,7 +498,6 @@ const previousEpochObservers = arIO.getPrescribedObservers({
     "compositeWeight": 0.4494598765432099,
     "normalizedCompositeWeight": 0.002057032496835938
   },
-  ...
 ]
 ```
 </details>
