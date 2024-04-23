@@ -124,10 +124,6 @@ module.exports = [
   //   ],
   // },
   {
-    title: "Glossary",
-    path: "/glossary",
-  },
-  {
     title: "Concepts",
     children: [
       {
@@ -139,6 +135,10 @@ module.exports = [
         path: "/concepts/sandboxing",
       },
     ],
+  },
+  {
+    title: "SDK",
+    path: "/guides/sdk"
   },
   {
     title: "Guides",
@@ -197,11 +197,11 @@ module.exports = [
     ],
   },
   {
-    title: "Community Resources",
-    path: "/community-resources",
+    title: "Glossary",
+    path: "/glossary",
   },
   {
-    title: "SDK",
-    path: "/guides/sdk"
+    title: "Community Resources",
+    path: "/community-resources",
   },
 ];
