@@ -243,5 +243,23 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>undefined</td>
             <td>Sets the age threshold in sends; files older than this are candidates for contiguous data cache cleanup</td>
         </tr>
+        <tr>
+            <th>RUN_RESOLVER</th>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>If true, enables the experimental local ArNS resolver service</td> 
+        </tr>
+        <tr>
+            <th>TRUSTED_ARNS_RESOLVER_TYPE</th>
+            <td>String</td>
+            <td>gateway</td>
+            <td>Sets the type of ArNS resolver the gateway will use, either `gateway` or `resolver`. Set `resolver` to use experimental local ArNS resolver.</td>
+        </tr>
+        <tr>
+            <th>TRUSTED_ARNS_RESOLVER_URL</th>
+            <td>String</td>
+            <td>https:__NAME__.arweave.dev</td>
+            <td>Sets the url a gateway will use to request ArNS name resolution when type is set to `resolver`</td>
+        </tr>
     </table>
 </div>
