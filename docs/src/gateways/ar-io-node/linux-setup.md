@@ -41,7 +41,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt install -y curl openssh-se
 ```
 
 ```
-nvm install 18.8.0 && nvm use 18.8.0
+nvm install 20.11.1 && nvm use 20.11.1
 ```
 
 ### Required packages
@@ -127,7 +127,7 @@ These packages are not required to run a node in its basic form. However, they w
 10. Install Node.js:
 
     ```
-    nvm install 18.8.0
+    nvm install 20.11.1
     ```
 
 11. Install build tools
