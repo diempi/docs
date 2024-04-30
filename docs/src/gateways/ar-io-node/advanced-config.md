@@ -89,7 +89,7 @@ will clear items from the contiguous data cache after ten thousand (10,000) seco
 
 ## ArNS Resolver
 
-Gateways, by default, use the ArNS smartweave cache in order to resolve and serve ArNS names. Starting with [Release 9](./release-notes.md#release-9---2024-04-10) gateways can instead build and maintain their own local cache. Doing so removes external dependencies and allows faster resolution.
+Gateways, by default, forward requests to resolve ArNS names to [arweave.dev](https://arweave.dev). Starting with [Release 9](./release-notes.md#release-9---2024-04-10) gateways can instead build and maintain their own local cache. Doing so removes external dependencies and allows faster resolution.
 
 View the code for the ArNS resolver service here: [https://github.com/ar-io/arns-resolver](https://github.com/ar-io/arns-resolver)
 
@@ -105,4 +105,4 @@ TRUSTED_ARNS_RESOLVER_URL=http://resolver:6000
 
 - **RUN_RESOLVER** is a boolean representing an on/off switch for the local resolver. 
 - **TRUSTED_ARNS_RESOLVER_TYPE** sets the method the gateway uses for resolving ArNS names. Use `resolver` for the local resolver, or `gateway` for default functionality.
-- **TRUSTED_ARNS_RESOLVER_URL** is the url a gateway will use to request ArNS name resolution when type is set to `resolver`.
+- **TRUSTED_ARNS_RESOLVER_URL** is the url a gateway will use to request ArNS name resolution.
