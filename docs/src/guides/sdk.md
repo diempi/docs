@@ -581,7 +581,7 @@ Joins a gateway to the ar.io network via its associated wallet. Requires `signer
 ```typescript
 const jointNetworkParams = {
   /* initial operator stake */
-  qty: 4000,
+  qty: 10000,
   /* delegated staking settings */
   allowDelegatedStaking: true,
   minDelegatedStake: 100,
@@ -591,6 +591,7 @@ const jointNetworkParams = {
   label: 'john smith', // min 1, max 64 characters
   note: 'The example gateway', // max 256 characters
   properties: 'FH1aVetOoulPGqgYukj0VE0wIhDy90WiQoV3U2PeY44', // Arweave transaction ID containing additional properties of the Gateway.
+  observerWallet: '0VE0wIhDy90WiQoV3U2PeY44FH1aVetOoulPGqgYukj', // wallet address of the observer
   /* gateway info */
   fqdn: 'example.com',
   port: 443,
