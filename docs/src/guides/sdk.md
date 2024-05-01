@@ -36,7 +36,7 @@ const gateways = arIO.getGateways();
 
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -144,7 +144,7 @@ The SDK provides TypeScript types. When you import the SDK in a TypeScript proje
 
 #### `init({ signer })`
 
-Factory function to that creates a read-only or writeabe client. By providing a `signer` additional write APIs that require signing, like `joinNetwork` and `delegateStake` are available. By default, a read-only client is returned and no write APIs are available.
+Factory function to that creates a read-only or writeable client. By providing a `signer` additional write APIs that require signing, like `joinNetwork` and `delegateStake` are available. By default, a read-only client is returned and no write APIs are available.
 
 ```typescript
 // read-only client that has access to all read APIs
@@ -159,6 +159,102 @@ const arIOWriteable = ArIO.init({ signer: nodeSigner});
 
 ```
 
+#### `getState({ evaluationOptions })`
+
+Retrieves the current state of the ArIO contract.
+
+```ts
+const arIO = ArIO.init();
+const state = await arIO.getState();
+```
+
+<details><summary>Output</summary>
+
+```json
+{
+  "lastTickedHeight": 1415568, // current block height
+  "evolve": "92MCDWn0LihmWXKVnOeMDEQxPbiV4Y3bRjnTet7J3eg",
+  "auctions": {
+    // auctions
+  },
+  "balances": {
+    // balances
+  },
+  "distributions": {
+    // epoch distribution info
+  },
+  "gateways": {
+    // gateways
+  },
+  "observations": {
+    // observations
+  },
+  "prescribedObservers": {
+    // prescribedObservers
+  },
+  "records": {
+    // records
+  },
+  "demandFactoring": {
+    // demandFactoring
+  },
+  "vaults": {
+    // vaults
+  }
+}
+```
+</details>
+
+Alternatively, you can get the contract at a specific block height or sort key by providing `evaluationOptions`:
+
+```ts
+const arIO = ArIO.init();
+const state = await arIO.getState({
+  evaluationOptions: {
+    evalTo: { blockHeight: 1382230 }, // alternatively, use evalTo: { sortKey: 'SORT_KEY' }
+  },
+});
+```
+
+<details><summary>Output</summary>
+
+```json
+{
+  "lastTickedHeight": 1382230, // evaluated block height
+  "evolve": "92MCDWn0LihmWXKVnOeMDEQxPbiV4Y3bRjnTet7J3eg",
+  "auctions": {
+    // auctions
+  },
+  "balances": {
+    // balances
+  },
+  "distributions": {
+    // epoch distribution info
+  },
+  "gateways": {
+    // gateways
+  },
+  "observations": {
+    // observations
+  },
+  "prescribedObservers": {
+    // prescribedObservers
+  },
+  "records": {
+    // records
+  },
+  "demandFactoring": {
+    // demandFactoring
+  },
+  "vaults": {
+    // vaults
+  }
+}
+```
+
+</details>
+
+
 #### `getBalance({ address, evaluationOptions })`
 
 Retrieves the balance of the specified wallet address.
@@ -171,7 +267,7 @@ const balance = arIO.getBalance({
 
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 0
@@ -188,7 +284,7 @@ const balances = arIO.getBalances();
 
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -211,7 +307,7 @@ const gateway = arIO.getGateway({
 
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -257,7 +353,7 @@ const arIO = ArIO.init();
 const gateways = arIO.getGateways();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -309,7 +405,7 @@ const arIO = ArIO.init();
 const record = arIO.getArNSRecord({ domain: 'ardrive' });
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -331,7 +427,7 @@ const arIO = ArIO.init();
 const records = arIO.getArNSRecords();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -362,7 +458,7 @@ const arIO = ArIO.init();
 const observations = await arIO.getObservations();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -390,7 +486,7 @@ const arIO = ArIO.init();
 const distributions = await arIO.getDistributions();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -412,7 +508,7 @@ const arIO = ArIO.init();
 const epoch = await arIO.getEpoch({ blockHeight: 1382230 });
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -435,7 +531,7 @@ const arIO = ArIO.init();
 const epoch = await arIO.getCurrentEpoch();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -458,7 +554,7 @@ const arIO = ArIO.init();
 const observers = arIO.getPrescribedObservers();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 [
@@ -510,7 +606,7 @@ Return the auction info for the supplied domain, be it in auction, registered, o
 const auction = await arIO.getAuction({ domain });
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
  {
@@ -548,7 +644,7 @@ Retrieves all active auctions.
 const auctions = await arIO.getAuctions({ evaluationOptions });
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
@@ -783,7 +879,7 @@ The ANT contract client class exposes APIs relevant to compliant Arweave Name To
 
 #### `init(signer)`
 
-Factory function to that creates a read-only or writeabe client. By providing a `signer` additional write APIs that require signing, like `setRecord` and `transfer` are available. By default, a read-only client is returned and no write APIs are available.
+Factory function to that creates a read-only or writeable client. By providing a `signer` additional write APIs that require signing, like `setRecord` and `transfer` are available. By default, a read-only client is returned and no write APIs are available.
 
 ```typescript
 const browserSigner = new ArConnectSigner(window.arweaveWallet);
@@ -804,7 +900,7 @@ const ant = ANT.init({ contractTxId });
 const owner = await ant.getOwner();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM"
@@ -821,7 +917,7 @@ const ant = ANT.init({ contractTxId });
 const controllers = await ant.getControllers();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 ["bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM"]
@@ -838,7 +934,7 @@ const ant = ANT.init({ contractTxId });
 const records = await ant.getRecords();
 ```
 
-<details><summary>outputs</summary>
+<details><summary>Output</summary>
 
 ```json
 {
