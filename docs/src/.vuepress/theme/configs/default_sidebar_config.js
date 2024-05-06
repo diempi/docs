@@ -204,4 +204,8 @@ module.exports = [
     title: "SDK",
     path: "/guides/sdk"
   },
+  {
+    title: "SDK Release Notes",
+    path: "/guides/sdk-release-notes"
+  }
 ];
