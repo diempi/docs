@@ -141,6 +141,10 @@ module.exports = [
     path: "/guides/sdk"
   },
   {
+    title: "SDK Release Notes",
+    path: "/guides/sdk-release-notes"
+  },
+  {
     title: "Guides",
     children: [
       {
