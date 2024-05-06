@@ -17,19 +17,19 @@ The ar.io SDK provides functionality for interacting with the ar.io ecosystem of
 ## Installation
 
 ```shell
-npm install @ar-io/sdk
+npm install @ar.io/sdk
 ```
 
 or
 
 ```shell
-yarn add @ar-io/sdk
+yarn add @ar.io/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { ArIO } from '@ar-io/sdk';
+import { ArIO } from '@ar.io/sdk';
 
 const arIO = new ArIO();
 const gateways = arIO.getGateways();
@@ -89,7 +89,7 @@ The SDK is provided in both CommonJS and ESM formats and is compatible with bund
 #### Bundlers (Webpack, Rollup, ESbuild, etc.)
 
 ```javascript
-import { ArIO } from '@ar-io/sdk';
+import { ArIO } from '@ar.io/sdk';
 
 // set up client
 const arIO = ArIO.init();
@@ -101,7 +101,7 @@ const gateways = arIO.getGateways();
 
 ```html
 <script type="module">
-  import { ArIO } from 'https://unpkg.com/@ar-io/sdk';
+  import { ArIO } from 'https://unpkg.com/@ar.io/sdk';
 
   // set up client
   const arIO = ArIO.init();
@@ -115,7 +115,7 @@ const gateways = arIO.getGateways();
 ##### ESM (NodeNext)
 
 ```javascript
-import { ArIO } from '@ar-io/sdk/node';
+import { ArIO } from '@ar.io/sdk/node';
 
 // set up client
 const arIO = ArIO.init();
@@ -126,7 +126,7 @@ const gateways = await arIO.getGateways();
 ##### CJS
 
 ```javascript
-import { ArIO } from '@ar-io/sdk';
+import { ArIO } from '@ar.io/sdk';
 
 // set up client
 const arIO = ArIO.init();
