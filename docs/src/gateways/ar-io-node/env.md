@@ -136,6 +136,18 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>If true, runs the Observer alongside the gateway to generate Network compliance reports</td>
         </tr>
         <tr>
+            <th>MIN_RELEASE_NUMBER</th>
+            <td>string</td>
+            <td>"0"</td>
+            </td>Sets the minimum Gateway release version to check while doing a gateway version assessment</td>
+        </tr> 
+        <tr>
+            <th>AR_IO_NODE_RELEASE</th>
+            <td>string</td>
+            <td>"0"</td>
+            </td>Sets the current ar.io node version to be set on X-AR-IO-Node-Release header on requests to the reference gateway</td>
+        </tr> 
+        <tr>
             <th>OBSERVER_WALLET</th>
             <td>String</td>
             <td>undefined</td>
@@ -236,6 +248,12 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>String</td>
             <td>{"never": true}</td>
             <td>Only emit webhooks for transactions and data items compliant with this filter</td>
+        </tr>
+        <tr>
+            <th>WEBHOOK_BLOCK_FILTER</th>
+            <td>String</td>
+            <td>{"never": true}</td>
+            <td>Only emit webhooks for blocks compliant with this filter</td>
         </tr>
         <tr>
             <th>CONTIGUOUS_DATA_CACHE_CLEANUP_THRESHOLD</th>
