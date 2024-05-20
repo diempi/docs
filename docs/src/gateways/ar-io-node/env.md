@@ -261,5 +261,17 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <td>https:__NAME__.arweave.dev</td>
             <td>Sets the url a gateway will use to request ArNS name resolution when type is set to `resolver`</td>
         </tr>
+        <tr>
+            <th>ENABLE_MEMPOOL_WATCHER</th>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>If true, the gateway will start indexing pending tx from the mempool</td>
+        </tr>
+        <tr>
+            <th>MEMPOOL_POLLING_INTERVAL_MS</th>
+            <td>Number</td>
+            <td>30000</td>
+            <td>Sets the mempool Polling interval, in milliseconds</td>
+        </tr>
     </table>
 </div>
