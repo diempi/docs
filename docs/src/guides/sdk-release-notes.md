@@ -4,6 +4,71 @@
 
 Welcome to the documentation page for the ar.io SDK release notes. Here, you will find detailed information about each version of the ar.io SDK, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io SDK. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io SDK [change logs](https://github.com/ar-io/ar-io-sdk/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io SDK by referring to this page for all release-related information.
 
+## [1.1.0] (https://github.com/ar-io/ar-io-sdk/compare/v1.0.8...v1.1.0) (2024-06-03)
+
+### Bug Fixes
+
+* **api**: make evaluation options optional on the interface ([9e5a1c0](https://github.com/ar-io/ar-io-sdk/commit/9e5a1c0572486f9c1e417453fb9c54dd102cbdb4))
+* **api**: remove unused variable for epochBlockHeight ([98c5ebc](https://github.com/ar-io/ar-io-sdk/commit/98c5ebc447b1b6d0249e0602ce7e4af97e424cc1))
+* **arweave**: default to arweave.net ([84c9653](https://github.com/ar-io/ar-io-sdk/commit/84c9653be1fb92f8ed15da689d65ff19e5733ba4))
+* **axios**: add back axios-retry ([9aae4de](https://github.com/ar-io/ar-io-sdk/commit/9aae4de1c23ca50acb613ff566e3f73c27f0ff0e))
+* **errors**: throw AbortError on signal aborted ([63bd395](https://github.com/ar-io/ar-io-sdk/commit/63bd39566bc4ee08504b98b82c62dd22e100bc7f))
+* **getContracts**: only implement util for now ([6b29c2f](https://github.com/ar-io/ar-io-sdk/commit/6b29c2ff7773320c2b6d16677826d59bd515332c))
+* **gql query**: don't abstract the data protocol query ([f0b8f77](https://github.com/ar-io/ar-io-sdk/commit/f0b8f7718b777358d6b6946159f57551ea76c1e7))
+* **imports**: import type from base route warp-contracts ([bf99a85](https://github.com/ar-io/ar-io-sdk/commit/bf99a85d0d099cf20db9b70db1bf84f9908b51e5))
+* **init**: allow signer to be undefined and if so return readable ([b6a05e2](https://github.com/ar-io/ar-io-sdk/commit/b6a05e205c60c6b8623fbac6795a1e96a7a19590))
+* **init**: fix type for init to allow undefined signer ([0a64ea9](https://github.com/ar-io/ar-io-sdk/commit/0a64ea9006571c93b4e9a26803b04d7da8ddcb9f))
+* **init**:  remove unnecessary destructuring ([81af1af](https://github.com/ar-io/ar-io-sdk/commit/81af1af7190f18726a20ebaaaa5712a4e815bb35))
+* **interface**: remove epochBlockHeight from interface ([b646f08](https://github.com/ar-io/ar-io-sdk/commit/b646f08e795635e4597d48d7c56419849c352a88))
+* **types**:remove DataItem from WriteInteractionResult ([eadb1a1](https://github.com/ar-io/ar-io-sdk/commit/eadb1a1d61985caf1326c32d1205d3e8db309374))
+* **types**: use gql node interface for dataProtocolTransaction ([79cebd9](https://github.com/ar-io/ar-io-sdk/commit/79cebd90b930829b740bed058f7cfe0da3b7799e))
+* **warp**: ensure contract init on read interactions ([bc3d1b8](https://github.com/ar-io/ar-io-sdk/commit/bc3d1b84f99cf3341cea42641b58b792434ac405))
+
+### Features
+
+
+* **getContracts**: add get contracts on network specific providers like WarpContract ([603d36e](https://github.com/ar-io/ar-io-sdk/commit/603d36edd130d6b0410fa7199450ec91d7b4c821))
+* **gql util**: add smartweave gql utils ([5ea3aab](https://github.com/ar-io/ar-io-sdk/commit/5ea3aaba1a5466741faa6e3b39d5908d25d37d49))
+* **write**: add tags support to write interactions on warp-contract and saveObservations ([46eb4c9](https://github.com/ar-io/ar-io-sdk/commit/46eb4c91ba7c56cbeefde3b4fc2a522fda5fda1d))
+
+## [1.0.8](https://github.com/ar-io/ar-io-sdk/compare/v1.0.7...v1.0.8) (2024-05-29)
+
+### Bug Fixes
+
+* **api**: add getPriceForInteration api to ario contract ([3b8083c](https://github.com/ar-io/ar-io-sdk/commit/3b8083c173bd35f7332c68dc094b092adedaf8e7))
+* **bundle**: minify web bundle ([9266676](https://github.com/ar-io/ar-io-sdk/commit/9266676cc6cc26cc6829ef902329879e6f179fc4))
+* **api**: use function map for method name ([439ec1f](https://github.com/ar-io/ar-io-sdk/commit/439ec1f649c2f54d6e1516ec4e7af5e8a080c2ed))
+* **reserved**: add reserved arns name get methods ([ad203ef](https://github.com/ar-io/ar-io-sdk/commit/ad203ef22402851d28643630243716465b2ce030))
+* **signer**: check if method is property of signer before using ([c52783c](https://github.com/ar-io/ar-io-sdk/commit/c52783c86bfa4019bc565dd457d7f14defdd1129))
+* **signer**: modify signer to assume the signer type based on public key being undefined ([b775c96](https://github.com/ar-io/ar-io-sdk/commit/b775c9672ad68ac987bf37ec1cf0d7c625c9c426))
+* **test**: add dockerfile for running tests in certain node environments ([86cf2ad](https://github.com/ar-io/ar-io-sdk/commit/86cf2ad51d09e88c13bdd0ba0e8a3a2b23b9d395))
+
+## [1.0.7](https://github.com/ar-io/ar-io-sdk/compare/v1.0.6...v1.0.7) (2024-05-23)
+
+### Bug Fixes
+
+* **contract**: add extendLease and increaseUndernameSupport apis ([1b13b5e](https://github.com/ar-io/ar-io-sdk/commit/1b13b5e7e24259fbd2762848e6066822af51cecd))
+* **types**: fix the AtLeastOne type ([ffd0869](https://github.com/ar-io/ar-io-sdk/commit/ffd0869949814196817d0ffb14fe0cf2be2ad298))
+* **deps**: force arweavve to 1.15.1 ([2448598](https://github.com/ar-io/ar-io-sdk/commit/244859865b986a4c48b6446fc41230039cc5fcc0))
+* **contract**: make params required - properties and note ([89db674](https://github.com/ar-io/ar-io-sdk/commit/89db674a187dffc83413ac1ac3922ca78ae3f88d))
+* **types**: update tests and use overwrite type to allow mIOtoken for certain paramaters ([badcece](https://github.com/ar-io/ar-io-sdk/commit/badcece5ba33b3e26448988ae1aee88e706c9da5))
+* **api**: change to increaseUndernameLimit ([9b72c1e](https://github.com/ar-io/ar-io-sdk/commit/9b72c1ed261ecae43fa4c0cd3e00ddb61e6e7ee5))
+* **docs**: update ario apis ([4af0862](https://github.com/ar-io/ar-io-sdk/commit/4af08626abfe4cd16f6c4b56696e19c7803e7dc6))
+* **tests**: update extend test util to include a test domain ([e959b7c](https://github.com/ar-io/ar-io-sdk/commit/e959b7cc3d642651c0313529ad47343e3ff2c69d))
+* **token**: add mIO and IO token classes to exports ([f47f7d5](https://github.com/ar-io/ar-io-sdk/commit/f47f7d5c251973058866340a6bc2baddbf973ecf))
+* **types**: add delegated gateway type ([c877496](https://github.com/ar-io/ar-io-sdk/commit/c87749660d2da62e6b996a9f034ce12fb702d93b))
+* **types**: export the token types ([dfc83ae](https://github.com/ar-io/ar-io-sdk/commit/dfc83ae74a110dd06ddab16d5f88d192e4c0c5ad))
+* **types**: remove visible types ([6ab1fc3](https://github.com/ar-io/ar-io-sdk/commit/6ab1fc3284d35fdd8f70a1fa1ac5cb7965878a51))
+* **types**: update Gateway delegates type to use the new GatewayDelegate ([ac7e924](https://github.com/ar-io/ar-io-sdk/commit/ac7e924f24ba6133b2917de8416c37bf6560cdd4))
+* **warp**: bump warp version ([db7344d](https://github.com/ar-io/ar-io-sdk/commit/db7344d269968a1f4a287eb2c2d503e0045fcf5e))
+
+## [1.0.6](https://github.com/ar-io/ar-io-sdk/compare/v1.0.5...v1.0.6) (2024-05-07)
+
+### Bug Fixes
+
+* **warp**: bump warp to fix AbortError issue on warp imports for web ([c9a5613](https://github.com/ar-io/ar-io-sdk/commit/c9a561395da9cd0e04cc9320979c68f93ee99c0a))
+
+
 ## [1.0.5](https://github.com/ar-io/ar-io-sdk/compare/v1.0.4...v1.0.5) (2024-05-02)
 
 
