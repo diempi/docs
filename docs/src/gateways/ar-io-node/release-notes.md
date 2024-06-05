@@ -9,6 +9,22 @@ next: false
 Welcome to the documentation page for the ar.io gateway release notes. Here, you will find detailed information about each version of the ar.io gateway, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io gateway. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io gateway [change logs](https://github.com/ar-io/ar-io-node/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io gateway by referring to this page for all release-related information.
 
 
+## [Release 12] - 2024-06-05
+
+- **Added**
+
+    - Added `/ar-io/admin/queue-data-item` endpoint for queuing data item headers for indexing before the bundles containing them are processed. This allows trusted bundlers to make their data items quickly available to be queried via GraphQL without having to wait for bundle data submission or unbundling.
+    - Added experimental support for retrieving contiguous data from S3. See `AWS_*` [environment variables documentation]() for configuration details. In conjuction with a local Turbo bundler this allows optimistic bundle (but not yet data item) retrieval.
+    - Add experimental support for fetching data from gateway peers. It can be enabled by adding `ario-peer` to `ON_DEMAND_RETRIEVAL_ORDER`. Note: do not expect this work reliably yet! This functionality is in active development and will be improved in future releases.
+    - Add `import_attempt_count` to `bundle` records to enable future bundle import retry optimizations.
+
+- **Changed**
+
+    - Removed `version` from `docker-compose.yaml` to avoid warnings with recent versions of `docker-compose`.
+    - Switched default observer port from 5000 to 5050 to avoid conflict on OS X. Since Envoy is used to provide external access to the observer API this should have no user visible effect.
+
+
+
 ## [Release 11] - 2024-05-21
 
 - **Added**
