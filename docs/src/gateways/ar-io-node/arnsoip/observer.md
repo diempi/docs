@@ -1,4 +1,4 @@
----
+﻿---
 next: false
 ---
 
@@ -25,7 +25,7 @@ The Observation protocol is organized around epochs, periods of time that are br
 - Each epoch (approximately 7 block-days), a random pool of active gateways will be selected (prescribed) to perform observation duties.  
 - Within the epoch, observers are tasked with evaluating a subset of ArNS names for each gateway in the network.  
 - By the end of the epoch’s observation reporting period, the observer must upload its standardized health observation report to Arweave. 
-- The observer must also submit a SmartWeave interaction to the AR.IO contract to save its report transaction ID and a summary of all failed gateways for tallying by the incentive protocol. 
+- The observer must also submit an interaction to the AR.IO contract to save its report transaction ID and a summary of all failed gateways for tallying by the incentive protocol. 
 - After the observation reporting period and tallying periods have closed, the payout is performed on the next contract state tick. 
   - This payout rewards gateways and observers who have performed their duties. 
   - Gateways that did not meet the performance threshold will not receive rewards. 
@@ -46,7 +46,7 @@ Each observer shall assess the performance of the selected ArNS names (across al
 
 A comprehensive list of report criteria can be found in the Appendix. 
 
-Observers shall upload their completed reports (in JSON format) to the Arweave network as an onchain audit trail. In addition, observers shall submit an interaction to the AR.IO SmartWeave contact detailing each gateway that they observed to have “failed” their assessments. This is tallied and used to determine the reward distribution. 
+Observers shall upload their completed reports (in JSON format) to the Arweave network as an onchain audit trail. In addition, observers shall submit an interaction to the AR.IO smart contact detailing each gateway that they observed to have “failed” their assessments. This is tallied and used to determine the reward distribution. 
 
 ## Selection of Observers
 

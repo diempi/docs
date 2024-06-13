@@ -1,4 +1,4 @@
----
+﻿---
 permalink: "/token/"
 ---
 
@@ -8,7 +8,7 @@ permalink: "/token/"
 
 ## Overview
 
-IO is the multifunction SmartWeave Token (SWT) that powers The AR.IO Network and its suite of permaweb applications. The IO Token (ɸ) has many uses, including:
+IO is the multifunction aoComputer based token that powers The AR.IO Network and its suite of permaweb applications. The IO Token (ɸ) has many uses, including:
 
 - Protocol incentives,
 

@@ -1,4 +1,4 @@
----
+﻿---
 permalink: "/gateways/"
 ---
 
@@ -105,7 +105,7 @@ For example, small scale operators might want to use low-overhead relational dat
 
 ## ARNS Indexing and Routing
 
-The Arweave Name System’s (ArNS) state is managed by the IO token’s SmartWeave smart contract. AR.IO gateways shall perform the following minimum functions relative to ArNS:
+The Arweave Name System’s (ArNS) state is managed by the IO token’s smart contract. AR.IO gateways shall perform the following minimum functions relative to ArNS:
 
 - Actively track state changes in the contract.
 

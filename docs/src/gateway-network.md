@@ -1,4 +1,4 @@
----
+﻿---
 permalink: "/gateway-network/"
 ---
 
@@ -27,7 +27,7 @@ Being part of the network grants AR.IO Gateways an array of advantages, such as:
 
 ## Gateway Address Registry (GAR)
 
-Any Gateway operator that whishes to join the AR.IO Network must register their node in the AR.IO SmartWeave Contract's "Gateway Address Registry", known as the GAR. Registration involves staking a minimum amount of IO tokens and providing additional metadata describing the Gateway service offered.
+Any Gateway operator that whishes to join the AR.IO Network must register their node in the AR.IO smart contract's "Gateway Address Registry", known as the GAR. Registration involves staking a minimum amount of IO tokens and providing additional metadata describing the Gateway service offered.
 
 <!-- This metadata includes details such as:
 

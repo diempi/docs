@@ -1,4 +1,4 @@
----
+﻿---
 permalink: "/arns/"
 ---
 
@@ -8,13 +8,13 @@ permalink: "/arns/"
 
 Arweave URLs and Transaction IDs are long, difficult to remember, and occasionally miscategorized as spam. The Arweave Name System (ArNS) aims to resolve these problems in a decentralized manner. ArNS is a censorship-resistant naming system stored on Arweave, purchased with IO tokens, enabled through AR.IO gateway domains, and used to connect friendly domain names to permaweb dApps, web pages, data, and identities.
 
-It's like an open, permissionless address book for anything on the permaweb, powered by SmartWeave.
+It's like an open, permissionless address book for anything on the permaweb, powered by the aoComputer.
 
-This system works similarly to traditional DNS services, where users can purchase a name in a registry and DNS Name servers resolve these names to IP addresses. The system shall be flexible and allow users to purchase names permanently or lease them for a defined period based on their use case. With ArNS, the registry is decentralized, permanent, and stored on Arweave (with SmartWeave). This means that apps and infrastructure cannot just read the latest state of the registry but can also check any point in time in the past, creating a “Wayback Machine” of permanent data.
+This system works similarly to traditional DNS services, where users can purchase a name in a registry and DNS Name servers resolve these names to IP addresses. The system shall be flexible and allow users to purchase names permanently or lease them for a defined period based on their use case. With ArNS, the registry is decentralized, permanent, and stored on Arweave (through the aoComputer). This means that apps and infrastructure cannot just read the latest state of the registry but can also check any point in time in the past, creating a “Wayback Machine” of permanent data.
 
-Users can register a name, like *ardrive*, within the ArNS Registry. Before owning a name, they must create an Arweave Name Token (ANT), a SmartWeave Token and open-source protocol used by ArNS to track the ownership and control over the name. ANTs allow the owner to set a pointer to any type of permaweb data, like a page, dApp or file, via its Arweave Transaction ID.
+Users can register a name, like *ardrive*, within the ArNS Registry. Before owning a name, they must create an Arweave Name Token (ANT), an aoCOmputer process and open-source protocol used by ArNS to track the ownership and control over the name. ANTs allow the owner to set a pointer to any type of permaweb data, like a page, dApp or file, via its Arweave Transaction ID.
 
-Each AR.IO gateway acts as both a SmartWeave cache and an ArNS Name resolver. They will generate the latest state of both the ArNS Registry and its related ANTs and serve this information rapidly for apps and users. AR.IO gateways will also resolve that name as one of their own subdomains, e.g., *https://ardrive.arweave.net* and proxy all requests to the associated Arweave Transaction ID. This means that ANTs work across all AR.IO gateways that support them: *https://ardrive.ar-io.dev*, *https://ardrive.g8way.io/*, etc.
+Each AR.IO gateway acts as both a smart contract cache and an ArNS Name resolver. They will generate the latest state of both the ArNS Registry and its related ANTs and serve this information rapidly for apps and users. AR.IO gateways will also resolve that name as one of their own subdomains, e.g., *https://ardrive.arweave.net* and proxy all requests to the associated Arweave Transaction ID. This means that ANTs work across all AR.IO gateways that support them: *https://ardrive.ar-io.dev*, *https://ardrive.g8way.io/*, etc.
 
 Users can easily reference these friendly names in their browsers, and other applications and infrastructure can build rich solutions on top of these ArNS primitives.
 
@@ -27,11 +27,11 @@ Users can easily reference these friendly names in their browsers, and other app
 
 The ArNS Registry is a list of all the registered names and their associated ANT smart contract addresses. Registering a name requires spending IO tokens based upon the name length and purchase type. The system shall allow users to either lease a name on a yearly basis (maximum up to 5 years) or purchase that name permanently.
 
-The registry uses the following key rules, embedded within the SmartWeave Contract:
+The registry uses the following key rules, embedded within the AR.IO smart contract:
 
 - The genesis prices of names are set within the contract itself; these are the starting conditions.
 - Name prices vary based on name length, purchase type (lease vs buy), lease duration, and the current Demand Factor. See the Dynamic Pricing section for more details.
-- Name records in the registry each include a pointer to its Arweave Name Token Smart Contract address, its lease end time, and undername allocation.
+- Name records in the registry each include a pointer to its Arweave Name Token Smart Contract process address, its lease end time, and undername allocation.
 - Anyone with available IO Tokens can extend any name’s active lease.
 - Anyone with available IO Tokens can purchase undername space for any name.
 - When a lease expires, there is a grace period where it can still be extended before anyone else can repurchase the name with a new ANT.
@@ -50,9 +50,9 @@ All names registered shall meet the following criteria:
 
 ## Arweave Name Token (ANT)
 
-To establish ownership of a record in the ArNS Registry, each record contains both a friendly name and a reference to an Arweave Name Token, ANT. Name Tokens are unique SmartWeave tokens that give their owners the ability to update the Arweave Transaction IDs that their associated friendly names point to.
+To establish ownership of a record in the ArNS Registry, each record contains both a friendly name and a reference to an Arweave Name Token, ANT. Name Tokens are unique aoComputer process tokens that give their owners the ability to update the Arweave Transaction IDs that their associated friendly names point to.
 
-The ANT SmartWeave Contract is a standardized contract that contains the specific ArNS Record specification required by AR.IO gateways who resolve ArNS names and their Arweave Transaction IDs. It also contains other basic functionality to establish ownership and the ability to transfer ownership and update the Arweave Transaction ID.
+The ANT process is a standardized contract that contains the specific ArNS Record specification required by AR.IO gateways who resolve ArNS names and their Arweave Transaction IDs. It also contains other basic functionality to establish ownership and the ability to transfer ownership and update the Arweave Transaction ID.
 
 Name Tokens have an owner, who can transfer the token and control all of its modifiable settings. These settings include modifying the time to live (*ttl*) for each name contained in the ANT, and other settings like the ANT Name, Ticker, and an ANT Controller. The controller can only manage the ANT and set and update records, name, and the ticker, but cannot transfer the ANT. Note that ANTs are initially created by an end user, in accordance with network standards, who then has to ability to transfer its ownership or assign a controller as they see fit.
 
@@ -134,10 +134,7 @@ Undernames give more versatility and utility to owning an ArNS name.
 
 The future market landscape is unpredictable, and the AR.IO Network smart contract is designed to be immutable, operating without governance or mechanisms for manual intervention. In addition, the traditional method of employing a pricing oracle to fix prices relative to a stable currency is not viable due to the infancy of the network as well as the inherent reliance on outside dependencies. Considering this, ArNS is designed to be self-contained and adaptive, ensuring that name prices always mirror network activity and market conditions.
 
-To achieve this, ArNS incorporates:
-
-1. A dynamic pricing model that utilizes a “Demand Factor” to adjust fees in line with ArNS purchase activity.
-2. An auction system intended to seek fair market value for premium names, allowing initial prices to adapt based on actual user interest and bids. In this context, “premium names” are defined by their character count and purchase type (lease or permanent).
+To achieve this, ArNS incorporates a dynamic pricing model that utilizes a “Demand Factor” to adjust fees in line with ArNS purchase activity.
 
 ArNS is designed to ensure that name valuations are always in sync with their true market worth, despite the unchangeable nature of the smart contract it operates on.
 
@@ -153,51 +150,15 @@ This comprehensive approach ensures that ArNS names are accessible and reasonabl
 
 There are several pricing models for leasing and purchasing names:
 
-- **Leased Name, Instant Purchase**: Allows a user to lease a name for a certain duration and have it available for use immediately by the lessee.
+- **Leased Name**: Allows a user to lease a name for a certain duration and have it available for use immediately by the lessee.
 
-- **Permanent Name, Instant Purchase**: Allows a user to purchase a name permanently and have it available for use immediately by the owner.
-
-- **Leased Name, Auctioned**: Allows a user to lease a name for a duration but as the name is considered premium, it must go through an auction process before it can be acquired and used by the lessee.
-
-- **Permanent Name, Auctioned**: Allows a user to purchase a name permanently but as the name is considered premium, it must go through an auction process before it can be acquired and used by the owner.
-
-The table below summarizes the available purchase options for the name space:
-
-<center>
-<table class="inline-table">
-  <tr>
-    <th colspan="3" style="text-align: center;">Name Purchase Options</th>
-  </tr>
-  <tr>
-    <th>Type</th>
-    <th>Lease</th>
-    <th>Permanent</th>
-  </tr>
-  <tr>
-    <td>1-4 Characters</td>
-    <td>Auction</td>
-    <td>Auction</td>
-  </tr>
-  <tr>
-    <td>5-12 Characters</td>
-    <td>Instant</td>
-    <td>Auction</td>
-  </tr>
-  <tr>
-    <td>13-51 Characters</td>
-    <td>Instant</td>
-    <td>Instant</td>
-  </tr>
-</table>
-</center>
-
-<div class="caption">Name Purchase Options</div>
+- **Permanent Name**: Allows a user to purchase a name permanently and have it available for use immediately by the owner.
 
 ### Dynamic Pricing Mechanics
 
-Names are initially priced according to the Genesis Registration Fee (GRF), as set in the SmartWeave contract, with prices varying based on the length of the name. As the network's activity progresses, these fees give way to Base Registration Fees (BRF), which are modified by periodic step adjustments. The Demand Factor (DF) is a crucial component that dynamically scales prices, fluctuating with the network’s revenue trends.
+Names are initially priced according to the Genesis Registration Fee (GRF), as set in the AR.IO smart contract, with prices varying based on the length of the name. As the network's activity progresses, these fees give way to Base Registration Fees (BRF), which are modified by periodic step adjustments. The Demand Factor (DF) is a crucial component that dynamically scales prices, fluctuating with the network’s revenue trends.
 
-Revenue in the network accumulates within the Protocol Balance through various streams, such as instant name leases or purchases, auction completions, lease extensions, and under_name transactions. This cumulative revenue impacts the Demand Factor, which in turn influences the current name prices.
+Revenue in the network accumulates within the Protocol Balance through various streams, such as instant name leases or purchases, lease extensions, and under_name transactions. This cumulative revenue impacts the Demand Factor, which in turn influences the current name prices.
 
 The DF is adjusted by comparing the recent period’s revenue against a Revenue Moving Average (RMA) from the preceding seven periods. Based on this comparison, the DF can either increase, to reflect greater demand, or decrease, in response to diminished revenue, all within predetermined limits to prevent drastic fluctuations in pricing
 
@@ -208,10 +169,6 @@ The pricing system articulates various fees:
 - The Annual Fee is set as a proportion of the ARF.
 
 - Instant Lease Registration and Permabuy prices are derived from the ARF, adding the calculated annual fees over the desired years.
-
-- Auction parameters, including floor and ceiling prices for leases and permabuys, are directly influenced by the ARF.
-
-The distinction between instant buy and auction for a name is determined based on its character length and whether it is a lease or permabuy. The auction process itself begins at a ceiling price – substantially higher than the floor – calculated as a multiple of the floor price which includes the ARF and relevant annual fees. As the auction progresses, the price decreases until a bid is placed or the floor is reached, determining the sale price.
 
 The DF’s modifications are controlled by the network's recent performance against the RMA. An increase in revenue leads to a DF rise, signifying a thriving market demand, while a decrease indicates the opposite. This responsive adjustment mechanism ensures that the pricing model remains aligned with actual market activity.
 
@@ -225,41 +182,3 @@ The below chart represents Step Pricing in action:
 
 <img class="amazingdiagram" :src="$withBase('/images/aa-diagram-2.png')">
 <div class="caption">Step Pricing Action - Declining Demand</div>
-
-## Bid Initiated Dutch Auctions (BIDA)
-
-Auctions within ArNS serve a pivotal role, particularly for names considered premium by the community where market value can be highly variable. The auction format enables true market price discovery, ensuring that names reflect their real-time worth as determined by actual demand. As such, certain names must go to public auction based on their character length and purchase type. These auctions shall follow a Dutch Auction model whereby the first user interested in a name must initiate the process by placing the first bid.
-
-Dutch auctions work as follows: the first bid must be greater than or equal to the assigned floor price for the name. Once the first bid is placed, the timer for the auction begins. The auction begins at a price much higher than the floor price. As time passes, the purchase price progressively decreases until someone purchases it, or it hits the floor price, and the initial bidder receives the name.
-
-This does not mean that the initial bidder must wait until the auction concludes. At any time, the initial bidder can place a second bid to purchase the name for the current purchase price, or a second bidder can discover this auction and do the same. The benefit of this system, versus an English Auction system, is that there will only ever be 2 bids, the bid to initiate the auction, and the final bid to purchase. This makes for a more compact and scalable SmartWeave Contract state.
-
-Auction end dates are denoted by Arweave block height and established at the start of the auction. For example, the duration for an auction could be 14 days or 10,100 blocks.
-
-### Auction Price Curve
-
-For auctioned names, the progressively declining price of the name shall follow a power-law decay function:
-
-<center>P(t) = max(P0 * (1 – (k * t))^p, Pfloor)</center>
-
-where:
-
-- P(t), *nameAuctionPrice* is the amount of IO tokens required to win a purchase name in an auction.
-
-- P0, *nameAuctionStartPrice* is the starting price of this auction.
-
-- t, *elapsedAuctionTime* is the number of blocks that have elapsed since the start of the auction.
-
-- k, *decayRate* determines how quickly the price decreases over time.
-
-- p, *exponentVariable* determines the “shape” of the declining cost curve.
-
-- Pfloor, *nameAuctionFloorPrice* is the amount of IO used as the floor price and minimum bid to start this name purchase auction.
-
-The values of k and p shall be optimized so that the name price approaches the floor price (Pfloor) by the end of the auction period.
-
-Below is a representative auction curve resulting from this formula:
-
-<img class="amazingdiagram" :src="$withBase('/images/aa-diagram-3.png')">
-
-<div class="caption">Example Auction Price Curve</div>
