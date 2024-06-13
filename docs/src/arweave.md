@@ -60,7 +60,7 @@ Gateway use cases, and the types of administrators who operate them, can range f
 
 AO is a global supercomputer built on Arweave. This actor-oriented machine is a single, unified computing environment, hosted on a heterogenous set of nodes in a distributed network. AO is designed to offer an environment in which an arbitrary number of parallel processes can be resident, coordinating through an open message passing layer. This message passing standard connects the machine's independently operating processes together into a 'web' -- in the same way that websites operate on independent servers but are conjoined into a cohesive, unified experience via hyperlinks.
 
-<img class="amazingdiagram" :src="$withBase('/images/permanence-pie-4.png')">
+<img class="amazingdiagram" :src="$withBase('/images/aoPie/permanence-pie-4b.png')">
 
 <div class="caption">Diagram 4: AO - The Supercomputer and Smart Contract Protocol</div>
 
@@ -70,7 +70,7 @@ With AO, developers can create processes that act as smart contracts with token-
 
 The permaweb is the third and final layer of the permanence pie. The permaweb stands for the permanent web, a collection of all the webpages, apps, and files stored on top of the Arweave network and enlivened with the functionality of the AR.IO Network. For users and builders, the permaweb offers low-cost, zero maintenance, permanent hosting of their web apps, files, and web pages.
 
-<img class="amazingdiagram" :src="$withBase('/images/permanence-pie-5.png')">
+<img class="amazingdiagram" :src="$withBase('/images/aoPie/permanence-pie-5b.png')">
 
 <div class="caption">Diagram 5: The Permanence Pie</div>
 
