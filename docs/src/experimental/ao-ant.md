@@ -7,7 +7,7 @@ next: false
 
 ## Overview
 
-Arweave Name Tokens, or ANTs, are the smartweave contracts that control each ArNS name. You can easily set up an ao process to function as an ANT by loading the `ant.lua` file from the [ao-pilot](https://github.com/ar-io/ao-pilot) github repository into your process.
+Arweave Name Tokens, or ANTs, are the aoComputer contracts that control each ArNS name. You can easily set up an ao process to function as an ANT by loading the `ant.lua` file from the [ao-pilot](https://github.com/ar-io/ao-pilot) github repository into your process.
 
 ## Installation
 
@@ -39,7 +39,7 @@ Only authorized people can make updates to your ArNS name. Because of this, you 
 
 ### Initiate Record Sync and Update
 
-When you purchase an ArNS name on arns.app, that name is not automatically synced to the ao-ArNS registry. Anyone can initiate a sync, which loads the data of an ArNS name from the smartweave contract into the ao-ArNS registry:
+When you purchase an ArNS name on arns.app, that name is not automatically synced to the ao-ArNS registry. Anyone can initiate a sync, which loads the data of an ArNS name from the aoComputer contract into the ao-ArNS registry:
 
 ```shell
 Send({ Target = "TyduW6spZTr3gkdIsdktduJhgtilaR_ex5JukK8gI9o", Tags = { Action = "Initiate-Record-Sync", Name = "<ArNS-name-to-sync>" }})
@@ -47,7 +47,7 @@ Send({ Target = "TyduW6spZTr3gkdIsdktduJhgtilaR_ex5JukK8gI9o", Tags = { Action =
 
 Be sure to replace `<ArNS-name-to-sync>` with the correct ArNS name. 
 
-**NOTE**: Syncing data from the ArNS smartweave contract relies on the [Orbit Oracle](https://0rbit.co/). ao and Orbit are still in early development, and may not perform exactly as expected.
+<!-- **NOTE**: Syncing data from the ArNS smartweave contract relies on the [Orbit Oracle](https://0rbit.co/). ao and Orbit are still in early development, and may not perform exactly as expected. -->
 
 Once your process is a controller, and you have loaded the ANT script, you can initiate an update to the ao-ArNS registry by running the following command:
 

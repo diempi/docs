@@ -81,7 +81,7 @@ ar://good-morning
 ```
 
 
-The ARCSS protocol, along with the WayFinder extension, discerns between TxIds and ArNS names. Once the suitable `https://` request is formulated, the chosen gateway translates the ArNS name based on the ArNS smartweave contract.
+The ARCSS protocol, along with the WayFinder extension, discerns between TxIds and ArNS names. Once the suitable `https://` request is formulated, the chosen gateway translates the ArNS name based on the ArNS aoComputer contract.
 
 ## Wayfinder
 
