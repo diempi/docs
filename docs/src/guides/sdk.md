@@ -28,12 +28,15 @@ yarn add @ar.io/sdk
 
 ## Quick Start
 
+Loading the gateway list in NodeJS.
+
 ```typescript
 import { ArIO } from '@ar.io/sdk';
 
 const arIO = new ArIO();
 const gateways = arIO.getGateways();
 
+console.log(gateways);
 ```
 
 <details><summary>Output</summary>
@@ -89,7 +92,7 @@ The SDK is provided in both CommonJS and ESM formats and is compatible with bund
 #### Bundlers (Webpack, Rollup, ESbuild, etc.)
 
 ```javascript
-import { ArIO } from '@ar.io/sdk';
+import { ArIO } from '@ar.io/sdk/web';
 
 // set up client
 const arIO = ArIO.init();
