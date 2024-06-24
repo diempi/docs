@@ -82,12 +82,14 @@ The `version` attribute defines the version of manifest schema a manifest is usi
   }
 ```
 
+or
+
 ```json
 "index": {
     "path": "index.html",
   }
 ```
-
+<!-- 
 or
 
 ```json
@@ -95,11 +97,11 @@ or
     "path": "index.html",
     "id": "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI"
   }
-```
+``` -->
 
 The `index` attribute is an object that defines the base, or 'starting' data item. It is similar to the `/` endpoint on a website. When resolving the manifest with no additional path definition, this is the data item that will be returned.
 
-`index` accepts either `path`, `id` or both as sub attributes. `path` represents the key of a defined [path](#paths) in the manifest, while `id` represents a specific Arweave data item transaction Id.
+`index` accepts either `path` or `id` as sub attributes. `path` represents the key of a defined [path](#paths) in the manifest, while `id` represents a specific Arweave data item transaction Id.
 
 If both `path` and `id` are defined in `index`, `id` will override path.
 
