@@ -21,6 +21,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/config/#head
    */
   head: [
+    ["link", { rel: "icon", href: "/images/logo.png" }],
     [
       "meta",
       {
