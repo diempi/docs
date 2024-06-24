@@ -131,6 +131,10 @@ module.exports = [
         path: "/concepts/arcss",
       },
       {
+        title: "manifests",
+        path: "/concepts/manifests"
+      },
+      {
         title: "Browser Sandboxing",
         path: "/concepts/sandboxing",
       },
