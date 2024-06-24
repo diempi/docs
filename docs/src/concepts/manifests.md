@@ -78,6 +78,20 @@ The `version` attribute defines the version of manifest schema a manifest is usi
 
 ```json
 "index": {
+    "id": "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI"
+  }
+```
+
+```json
+"index": {
+    "path": "index.html",
+  }
+```
+
+or
+
+```json
+"index": {
     "path": "index.html",
     "id": "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI"
   }
