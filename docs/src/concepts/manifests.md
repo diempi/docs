@@ -51,7 +51,7 @@ A resolver, typically an ar.io gateway, will resolve urls requesting content bas
 
 With the above example, assume that the manifest was properly uploaded to Arweave and was given the transaction Id `UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`
 
-A user could who made a request to the ar.io gateway `arweave.dev` like this: `https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`
+A user could make a request to the ar.io gateway `arweave.dev` like this: `https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`
 
 Because there is no additional path provided on the request, the value found in `index` would be returned by the gateway, in this instance it would be the data item found at `cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI`
 
