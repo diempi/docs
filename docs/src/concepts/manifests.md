@@ -1,5 +1,6 @@
 ---
 permalink: "/manifests"
+sidebarDepth: 3
 ---
 
 # Manifests

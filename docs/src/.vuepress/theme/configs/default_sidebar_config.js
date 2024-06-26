@@ -125,6 +125,7 @@ module.exports = [
   // },
   {
     title: "Concepts",
+    // sidebarDepth: 3,
     children: [
       {
         title: "ar:// (ARCSS)",
@@ -132,7 +133,8 @@ module.exports = [
       },
       {
         title: "manifests",
-        path: "/concepts/manifests"
+        path: "/concepts/manifests",
+        
       },
       {
         title: "Browser Sandboxing",
