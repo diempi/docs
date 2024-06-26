@@ -32,7 +32,19 @@ http://<gateway domain>/<txId of NFT collection image manifest>/2.png
 ... and so on.
 ```
 
-ar.io gateways are capable of resolving manifest paths in a relative manner. Rather than requiring every link to contain the full Arweave transaction Id, which is nearly impossible given the immutable nature of Arweave, links from one path to another can be relative to the location of the first path. That is, if `index.html` needed to access the information held in `js/style.css` the relative link `./js/style.css` could be used instead of `<txId>/js/style.css`. This relative routing is incredibly useful for linking together files in a way that allows functional websites to be hosted entirely on Arweave.
+ar.io gateways are capable of resolving manifest paths in a relative manner. An HTML page loading assets from Arweave would be very difficult to develop, maintain, and harden against hosting domains leaving existence if assets had to be linked to by a fully qualified domain name and an Arweave data item ID as the path. For example:
+
+```html
+<img src="https://arweave.dev/3zFsd7bkCAUtXUKBQ4XiPiQvpLVKfZ6kiLNt2XVSfoV">
+```
+
+Manifests allow HTML pages to use relative paths to assets with friendly names so that the document is easy to read, maintain, and host across any ar.io domain. For example:
+
+```html
+<img src="./logo.png">
+```
+
+Relative routing eliminates the need for every link to contain the full Arweave transaction ID and fully qualified domain name. This makes the HTML more readable and ensures that links remain valid even if the hosting domain changes. If `index.html` needed to access `js/style.css`, the relative link `./js/style.css` could be used instead of `<txId>/js/style.css`. This relative routing is incredibly useful for linking together files in a way that allows functional websites to be hosted entirely on Arweave.
 
 Learn more about relative path routing and structuring files into a permanently hosted website in ArDrive's [decentralized app guide](https://docs.ardrive.io/docs/misc/deploy/paths.html)
 
@@ -84,13 +96,37 @@ A resolver, typically an ar.io gateway, resolves URLs requesting content based o
 
 ### Example Usage
 
-Assume the manifest above is uploaded to Arweave with the transaction ID `UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`.
+Assume the manifest above is uploaded to Arweave with the transaction ID `UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`. The below table shows https requests to the ar.io gateway `arweave.dev` requesting various endpoints on the manifest transaction Id, the manifest path where the gateway will find the data to return, and the resulting Arweave txId.
 
-  - Request: `https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`
-      -  Response: The data item at `cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI` (index.html)
-
-  - Request: `https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk/404.html`
-      -  Response: The data item at `iXo3LSfVKVtXUKBzfZ4d7bkCAp6kiLNt2XVUFsPiQvQ` (404.html)
+<div style="text-align: center">
+    <table class="inline-table" id="gateway-table">
+        <tr>
+            <th>Request Path</th>
+            <th>Manifest Path</th>
+            <th>Data served from txID</th>
+        </tr>
+        <tr>
+            <td>https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk</td>
+            <td>index</td>
+            <td>cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI</td>
+        </tr>
+        <tr>
+            <td>https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk/index.html</td>
+            <td>index.html</td>
+            <td>cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI</td>
+        </tr>
+        <tr>
+            <td>https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk/js/style.css</td>
+            <td>js/style.css</td>
+            <td>3zFsd7bkCAUtXUKBQ4XiPiQvpLVKfZ6kiLNt2XVSfoV</td>
+        </tr>
+        <tr>
+            <td>https://arweave.dev/UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk/foobar</td>
+            <td>fallback</td>
+            <td>iXo3LSfVKVtXUKBzfZ4d7bkCAp6kiLNt2XVUFsPiQvQ</td>
+        </tr>
+    </table>
+</div>
 
 ## Specifications
 
