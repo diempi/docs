@@ -99,8 +99,8 @@ A resolver, typically an ar.io gateway, resolves URLs requesting content based o
 Assume the manifest above is uploaded to Arweave with the transaction ID `UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk`. The below table shows https requests to the ar.io gateway `arweave.dev` requesting various endpoints on the manifest transaction Id, the manifest path where the gateway will find the data to return, and the resulting Arweave txId.
 
 <div style="text-align: center">
-    <table class="inline-table" id="gateway-table">
-        <tr>
+    <table class="inline-table" id="gateway-table"  style="text-align: left">
+        <tr style="text-align: center">
             <th>Request Path</th>
             <th>Manifest Path</th>
             <th>Data served from txID</th>
