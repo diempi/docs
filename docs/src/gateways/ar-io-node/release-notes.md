@@ -8,6 +8,35 @@ next: false
 
 Welcome to the documentation page for the ar.io gateway release notes. Here, you will find detailed information about each version of the ar.io gateway, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io gateway. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io gateway [change logs](https://github.com/ar-io/ar-io-node/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io gateway by referring to this page for all release-related information.
 
+## [Release 14] - 2024-06-26
+
+- **Fixed**
+
+    - Correctly handle manifest `index` after `paths`.
+
+## [Release 13] - 2024-06-24
+
+- **Added**
+
+    - Added support for optimistically reading data items uploaded using the integrated Turbo bundler via the LocalStack S3 interface.
+    - Added `X-AR-IO-Origin-Node-Release` header to outbound data requests.
+    - Added `hops`, `origin`, and `originNodeRelease` query params to outbound data requests.
+    - Added support for `fallback` in v0.2 manifests that is used if no path in the manifest is matched.
+
+- **Changed**
+
+    - Updated Observer to read prescribed names from and write observations to the ar.io AO network process.
+    - Updated Resolver to read from the ar.io AO network process.
+
+- **Fixed**
+
+    - Modified optimistic indexing of data items to use a null `parent_id` when inserting into the DB instead of a placeholder value. This prevents unexpected non-null `bundledIn` values in GraphQL results for optimistically indexed data items.
+    - Modified GraphQl query logic to require an ID for single block GraphQL queries. Previously queries missing an ID were returning an internal SQLite error. This represents a small departure from arweave.net's query logic which returns the latest block for these queries. We recommend querying `blocks` instead of `block` in cases where the latest block is desired.
+    - Adjusted Observer health check to reflect port change to 5050.
+
+- **Security**
+
+    - Modified docker-compose.yaml to only expose Redis, PostgreSQL, and LocalStack ports internally. This protects gateways that neglect to deploy behind a firewall, reverse proxy, or load balancer.
 
 ## [Release 12] - 2024-06-05
 
