@@ -100,6 +100,8 @@ const arIO = ArIO.init();
 const gateways = arIO.getGateways();
 ```
 
+**Note**: polyfills are only provided when using the named `@ar.io/sdk/web` export (which requires `moduleResolution: nodenext` in `tsconfig.json`). If you are using the default export within a Typescript project (e.g. `moduleResolution: node`), you will need to provide your own polyfills - specifically `crypto`, `fs` and `buffer`. Refer to [examples/webpack](https://github.com/ar-io/ar-io-sdk/blob/main/examples/webpack) and [examples/vite](https://github.com/ar-io/ar-io-sdk/blob/main/examples/vite) for references in how to properly provide those polyfills. For other project configurations, refer to your bundler's documentation for more information on how to provide the necessary polyfills.
+
 #### Browser
 
 ```html
@@ -140,6 +142,26 @@ const gateways = await arIO.getGateways();
 ## Typescript
 
 The SDK provides TypeScript types. When you import the SDK in a TypeScript project types are exported from `./lib/types/[node/web]/index.d.ts` and should be automatically recognized by package managers, offering benefits such as type-checking and autocompletion.
+
+## IOToken & mIOToken
+
+The ArIO contract stores all values as mIO (milli-IO) to avoid floating-point arithmetic issues. The SDK provides an `IOToken` and `mIOToken` classes to handle the conversion between IO and mIO, along with rounding logic for precision.
+
+**All contract interactions expect values in mIO. If numbers are provided as inputs, they are assumed to be in raw mIO values.**
+
+### Converting IO to mIO
+
+```typescript
+import { IOToken, mIOToken } from '@ar.io/sdk';
+
+const ioValue = 1;
+const mIOValue = new IOToken(ioValue).toMIO();
+console.log(mIOValue); // 1000000 (mIO)
+
+const mIOValue = 1_000_000;
+const ioValue = new mIOToken(mIOValue).toIO();
+console.log(ioValue); // 1 (IO)
+```
 
 ## ArIO Contract
 
@@ -707,7 +729,7 @@ const joinNetworkTx = await authenticatedArIO.joinNetwork(joinNetworkParams);
 // t4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3
 ```
 
-#### `updateGatewaySettings( gatewaySettings)`
+#### `updateGatewaySettings( gatewaySettings )`
 
 Writes new gateway settings to the caller's gateway configuration. Requires `signer` to be provided on `ArIO.init` to sign the transaction.
 
@@ -773,7 +795,7 @@ const decreaseDelegateStakeTx =
 // fDrr0_J4Iurt7caNST02cMotaz2FIbWQ4Kcj616RHl3
 ```
 
-#### increaseOperatorStake({ qty })
+#### `increaseOperatorStake({ qty })`
 
 Increases the caller's operator stake. Must be executed with a wallet registered as a gateway operator. Requires `signer` to be provided on `ArIo.init` to sign the transaction.
 
