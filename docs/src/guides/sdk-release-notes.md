@@ -4,7 +4,14 @@
 
 Welcome to the documentation page for the ar.io SDK release notes. Here, you will find detailed information about each version of the ar.io SDK, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io SDK. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io SDK [change logs](https://github.com/ar-io/ar-io-sdk/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io SDK by referring to this page for all release-related information.
 
-## [1.1.0] (https://github.com/ar-io/ar-io-sdk/compare/v1.0.8...v1.1.0) (2024-06-03)
+
+## [1.1.1](https://github.com/ar-io/ar-io-sdk/compare/v1.1.0...v1.1.1) (2024-06-06)
+
+### Bug Fixes
+
+* **api**: default evaluation options on getArNSReservedNames api ([0a1f22e](https://github.com/ar-io/ar-io-sdk/commit/0a1f22ebe7fccd6d7f77a5255d2b639d670492fb))
+
+## [1.1.0](https://github.com/ar-io/ar-io-sdk/compare/v1.0.8...v1.1.0) (2024-06-03)
 
 ### Bug Fixes
 
