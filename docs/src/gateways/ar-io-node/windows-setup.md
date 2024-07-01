@@ -125,14 +125,14 @@ Before starting the installation process, ensure you have the following:
        - `-d`: Run the containers as background processes (detached mode).
 
         **NOTE**: Effective with Release #3, it is no longer required to include the `--build` flag when starting your gateway. Docker will automatically build using the image specified in the `docker-commpose.yaml` file. 
+
+        The gateway can be shut down using the command: 
+
+        ```
+        docker compose down
+        ```
         
    - If prompted by the firewall, allow access for Docker when requested.
-
-## Test Localhost
-
-- Open your web browser.
-- Enter `http://localhost:3000/3lyxgbgEvqNSvJrTX2J7CfRychUD5KClFhhVLyTPNCQ` in the address bar.
-- If you can see the image, your node is operating correctly.
 
 ## Set Up Router Port Forwarding
 
