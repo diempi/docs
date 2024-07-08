@@ -802,31 +802,6 @@ const io = IO.init({
 });
 ```
 
-<!-- ### Custom Contracts
-
-The ArIO contract client class exposes APIs relevant to the ar.io contract. It can be configured to use any contract ID that adheres to the spec of the ar.io contract. In the default case, it will automatically build and utilize a contract data provider interface that is configured to point the the known mainnet contract ID at construction time. You can provide custom contract data provider or, alternatively, a `contractTxId` to the ArIO constructor to use a different, ar.io-spec-compatible contract.
-
-```typescript
-// provide a custom contractTxId to the client and default to remote evaluation
-const remoteCustomArIO = ArIO.init({
-  contractTxId: 'TESTNET_CONTRACT_TX_ID',
-});
-
-// provide a custom contract to the client, and specify local evaluation using warp
-const localCustomArIO = ArIO.init({
-  contract: new WarpContract<ArIOState>({
-    contractTxId: 'TESTNET_CONTRACT_TX_ID',
-  }),
-});
-
-// provide a custom contract to the client, and specify local evaluation using remote cache
-const remoteCacheCustomArIO = ArIO.init({
-  contract: new RemoteContract<ArIOState>({
-    contractTxId: 'TESTNET_CONTRACT_TX_ID',
-  }),
-});
-``` -->
-
 ## Arweave Name Tokens (ANT's)
 
 The ANT client class exposes APIs relevant to compliant Arweave Name Token processes. It can be configured to use any process ID that adheres to the ANT process spec. You must provide either a custom process data provider or a processId to the ANT class constructor to use.
@@ -868,6 +843,7 @@ const info = await ant.getInfo();
   "owner": "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ"
 }
 ```
+</details>
 
 #### `getOwner()`
 
