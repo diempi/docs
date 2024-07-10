@@ -91,7 +91,7 @@ Once you edit your .env file, you need to "rebuild" your gateway for the changes
 ###
 
 <details>
-<summary><strong>I am geting an out of disk space error, but I still have open storage space on my computer</strong></summary>
+<summary><strong>I am getting an out of disk space error, but I still have open storage space on my computer</strong></summary>
 
 The most likely cause of this is inode exhaustion. Test this by running the command:
 

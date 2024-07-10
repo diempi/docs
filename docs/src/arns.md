@@ -25,9 +25,9 @@ Users can easily reference these friendly names in their browsers, and other app
 
 ## Name Registry
 
-The ArNS Registry is a list of all the registered names and their associated ANT smart contract addresses. Registering a name requires spending IO tokens based upon the name length and purchase type. The system shall allow users to either lease a name on a yearly basis (maximum up to 5 years) or purchase that name permanently.
+The ArNS Registry is a list of all the registered names and their associated ANT AO process Ids. Registering a name requires spending IO tokens based upon the name length and purchase type. The system shall allow users to either lease a name on a yearly basis (maximum up to 5 years) or purchase that name permanently.
 
-The registry uses the following key rules, embedded within the AR.IO smart contract:
+The registry uses the following key rules, embedded within the AR.IO AO process:
 
 - The genesis prices of names are set within the contract itself; these are the starting conditions.
 - Name prices vary based on name length, purchase type (lease vs buy), lease duration, and the current Demand Factor. See the Dynamic Pricing section for more details.

@@ -19,11 +19,11 @@ tags: [testnet, join, application, jwk, qty, fqdn, label, note, properties]
 
 ## Submit an Application
 
-Joining the ar.io Testnet requires staking a minimum of 10,000 Test IO Tokens. You must have Test IO Tokens before you are able to join. Test IO Tokens are currently distributed through an application system in the [ar.io Discord](https://discord.gg/7zUPfN4D6g).
-<!-- 
+Joining the ar.io Testnet requires staking a minimum of 10,000 Test IO Tokens. You must have Test IO Tokens before you are able to join. Test IO Tokens are currently not being distributed.
+
 New applications for joining the Testnet are not currently being accepted. Be sure to join the [ar.io Discord](https://discord.com/invite/7zUPfN4D6g) to stay up to date on Testnet status and possible future availability prior to the launch of the Mainnet. -->
 
-## Setting up and Running the Join Script
+<!-- ## Setting up and Running the Join Script
 
 Joining the ar.io Testnet is currently completed by manually running a script. The process for doing so is as follows:
 
@@ -107,4 +107,4 @@ yarn update-gateway-settings
 
 You will see another list of prompts in your terminal, to determine the settings you want to update. Your current settings will populate as the default values, so if you don't want to change something you can just press `ENTER` to accept the current value.
 
-The prompts will be identical to the prompts above for the `join-network` script.
+The prompts will be identical to the prompts above for the `join-network` script. -->

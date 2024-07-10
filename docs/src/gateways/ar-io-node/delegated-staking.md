@@ -8,9 +8,9 @@ permalink: "/gateways/delegated-staking"
 
 Gateway operators can choose to allow other people to stake tokens on their gateway. This is called “delegated staking”, and it increases the number of tokens staked for a given gateway. The additionally staked tokens result in a greater `stakeWeight` for the gateway - increasing it’s likelihood chosen as an observer and potentially receive additional rewards for a given epoch (assuming that the gateway’s observer is working properly). To incentivize this, you can set a portion of your gateway and observer rewards to be given to the people who stake on your gateway.
 
-By default, delegated staking is disabled. You will need to enable it, and configure your settings, by running the `update-gateway-settings` script from the [testnet contract repo](https://github.com/ar-io/testnet-contract).
+<!-- By default, delegated staking is disabled. You will need to enable it, and configure your settings, by running the `update-gateway-settings` script from the [testnet contract repo](https://github.com/ar-io/testnet-contract). -->
 
-## Installing the Testnet Contract repo
+<!-- ## Installing the Testnet Contract repo
 
 Enabling delegated staking can be accomplished very easily by running a script found in the [testnet-contract repo](https://github.com/ar-io/testnet-contract) on Github. 
 
@@ -142,7 +142,7 @@ When you are done, that section should look like this:
   );
   ``` -->
 
-## Running the Script
+<!-- ## Running the Script
 
 Once the repo is installed and your wallet is provided, all that is left is to run the script. This can be done with a single command in your terminal. 
 
@@ -165,4 +165,4 @@ You will be prompted in your terminal for the values of various settings on your
 - **Enable or disable delegated staking?**: Do you want to allow people to stake tokens on your gateway? `y` for yes or `n` for no.
 - **Enter the percent of gateway and observer rewards given to delegates**: What percentage of your gateway rewards do you want to give to your delegated stakers? Defaults to 10%.
 - **Enter the minimum  delegate stake for this gateway (in IO)**: The minimum number of tokens a person has to stake to delegate to your gateway. Defaults to 100.
-- **CONFIRM GATEWAY DETAILS?**: This is your last chance to review all of your settings before submitting the transaction. `y` to confirm and submit, `n` to cancel.
+- **CONFIRM GATEWAY DETAILS?**: This is your last chance to review all of your settings before submitting the transaction. `y` to confirm and submit, `n` to cancel. --> -->
