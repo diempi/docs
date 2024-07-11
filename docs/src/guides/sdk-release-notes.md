@@ -4,6 +4,33 @@
 
 Welcome to the documentation page for the ar.io SDK release notes. Here, you will find detailed information about each version of the ar.io SDK, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io SDK. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io SDK [change logs](https://github.com/ar-io/ar-io-sdk/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io SDK by referring to this page for all release-related information.
 
+# [2.0.0](https://github.com/ar-io/ar-io-sdk/compare/v1.2.2...v2.0.0) (2024-07-11)
+
+### Bug Fixes
+
+* **arweave:** use default arweave in IO ([21d25b9](https://github.com/ar-io/ar-io-sdk/commit/21d25b9e1109bc18ba4e074f314848143ed0828c))
+* **deps:** replace bunyan or console depending on the client environment ([9d940aa](https://github.com/ar-io/ar-io-sdk/commit/9d940aac99e94e5086091a2e41ffd73fe2c36715))
+* **log:** allow log level configuration for clients  ([9cb0981](https://github.com/ar-io/ar-io-sdk/commit/9cb0981e0f48c80fc000c05aba2c4cb69b5ca43c))
+* **log:** replace bunyan with winston to ensure browser compatibility ([80b38e0](https://github.com/ar-io/ar-io-sdk/commit/80b38e08879c83a986542f3fd9c65379680bf9b5))
+
+### Features
+
+* **io:** add paginated gateway support for larger state objects (e.g. balances, records, and gateways) ([b23efa8](https://github.com/ar-io/ar-io-sdk/commit/b23efa8e433451c3ff8361c54f6e35fdd30457a0))
+* **util:** add utility for fetching all records ([8df2aac](https://github.com/ar-io/ar-io-sdk/commit/8df2aacf530ff24f15cc14022a81f3168b8baea0))
+* **io:** add leaveNetwork API ([54222ce](https://github.com/ar-io/ar-io-sdk/commit/54222ce65b25e203b243df7a7c2317f9dc1fc7b9))
+
+
+### BREAKING CHANGES
+
+* **deps:** removes all smartweave implementations using warp-sdk. The result is an only AO compatible ANT and IO network contracts. Some utilities are preserved due to their usefulness.
+* **imports:** modifies `web` named exports to provide esm and cjs exports instead of minified bundle. The web bundle was causing issues in bundled projects, and polyfills are no longer provided by default. Refer to the [README](https://github.com/ar-io/ar-io-sdk/blob/main/README.md) for specifications on how to use the SDK for a web project.
+
+## [1.2.2](https://github.com/ar-io/ar-io-sdk/compare/v1.2.0...v1.2.1) (2024-07-11)
+
+### Bug Fixes
+
+* **api**: ensure timestamps are always in miliseconds ([93b162f](https://github.com/ar-io/ar-io-sdk/commit/93b162f22f27e6af4252e7551f785fbffc062e87))
+
 ## [1.2.1](https://github.com/ar-io/ar-io-sdk/compare/v1.2.0...v1.2.1) (2024-07-04)
 
 ### Bug Fixes
