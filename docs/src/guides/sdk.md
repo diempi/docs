@@ -139,6 +139,8 @@ const gateways = await io.getGateways();
 
 The SDK provides TypeScript types. When you import the SDK in a TypeScript project types are exported from `./lib/types/[node/web]/index.d.ts` and should be automatically recognized by package managers, offering benefits such as type-checking and autocompletion.
 
+**NOTE**: Typescript version 5.3 or higher is recommended.
+
 ## IOToken & mIOToken
 
 The ArIO contract stores all values as mIO (milli-IO) to avoid floating-point arithmetic issues. The SDK provides an `IOToken` and `mIOToken` classes to handle the conversion between IO and mIO, along with rounding logic for precision.
@@ -223,23 +225,35 @@ console.log(balance.valueOf());
 ```
 </details>
 
-#### `getBalances()`
+#### `getBalances({ cursor, limit, sortBy, sortOrder })`
 
-Retrieves the balances of the IO process in `mIO`
+Retrieves the balances of the IO process in `mIO`, paginated and sorted by the specified criteria. The `cursor` used for pagination is the last wallet address from the previous request.
 
 ```typescript
 const io = IO.init();
-const balances = await io.getBalances();
-
+const balances = await io.getBalances({
+  cursor: '-4xgjroXENKYhTWqrBo57HQwvDL51mMdfsdsxJy6Y2Z_sA',
+  limit: 1,
+  sortBy: 'balance',
+  sortOrder: 'desc',
+});
 ```
 
 <details><summary>Output</summary>
 
 ```json
 {
-  "-4xgjroXENKYhTWqrBo57HQwvDL51mMvSxJy6Y2Z_sA": 5000000000, // value in mIO
-  "-7vXsQZQDk8TMDlpiSLy3CnLi5PDPlAaN2DaynORpck": 5000000000, // value in mIO
-  "-9JU3W8g9nOAB1OrJQ8FxkaWCpv5slBET2HppTItbmk": 5000000000 // value in mIO
+  "items": [
+    {
+      "address": "-4xgjroXENKYhTWqrBo57HQwvDL51mMvSxJy6Y2Z_sA",
+      "balance": 1000000
+    }
+  ],
+  "hasMore": true,
+  "nextCursor": "-7vXsQZQDk8TMDlpiSLy3CnLi5PDPlAaN2DaynORpck",
+  "totalItems": 1789,
+  "sortBy": "balance",
+  "sortOrder": "desc"
 }
 ```
 </details>
@@ -284,42 +298,55 @@ const gateway = await io.getGateway({
 ```
 </details>
 
-#### `getGateways()`
+#### `getGateways({ cursor, limit, sortBy, sortOrder })`
 
-Retrieves the registered gateways of the IO process.
+Retrieves registered gateways of the IO process, using pagination and sorting by the specified criteria. The `cursor` used for pagination is the last gateway address from the previous request.
 
 ```typescript
 const io = IO.init();
-const gateways = await io.getGateways();
+const gateways = await io.getGateways({
+  limit: 1,
+  sortOrder: 'desc',
+  sortBy: 'operatorStake',
+});
 ```
+
+Available `sortBy` options are any of the keys on the gateway object, e.g. `operatorStake`, `start`, `status`, `settings.fqdn`, `settings.label`, `settings.note`, `settings.port`, `settings.protocol`, `stats`.`failedConsecutiveEpochs`, `stats.passedConsecutiveEpochs`, etc.
 
 <details><summary>Output</summary>
 
 ```json
 {
-  "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ": {
-    "end": 0,
-    "observerWallet": "IPdwa3Mb_9pDD8c2IaJx6aad51Ss-_TfStVwBuhtXMs",
-    "operatorStake": 250000000000, // value in mIO
-    "settings": {
-      "fqdn": "ar-io.dev",
-      "label": "AR.IO Test",
-      "note": "Test Gateway operated by PDS for the AR.IO ecosystem.",
-      "port": 443,
-      "properties": "raJgvbFU-YAnku-WsupIdbTsqqGLQiYpGzoqk9SCVgY",
-      "protocol": "https"
-    },
-    "start": 1256694,
-    "stats": {
-      "failedConsecutiveEpochs": 0,
-      "passedEpochCount": 30,
-      "submittedEpochCount": 30,
-      "totalEpochParticipationCount": 31,
-      "totalEpochsPrescribedCount": 31
-    },
-    "status": "joined",
-    "vaults": {}
-  }
+  "items": [
+    {
+      "gatewayAddress": "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ",
+      "observerAddress": "IPdwa3Mb_9pDD8c2IaJx6aad51Ss-_TfStVwBuhtXMs",
+      "operatorStake": 250000000000,
+      "settings": {
+        "fqdn": "ar-io.dev",
+        "label": "AR.IO Test",
+        "note": "Test Gateway operated by PDS for the AR.IO ecosystem.",
+        "port": 443,
+        "properties": "raJgvbFU-YAnku-WsupIdbTsqqGLQiYpGzoqk9SCVgY",
+        "protocol": "https"
+      },
+      "startTimestamp": 1720720620813,
+      "stats": {
+        "failedConsecutiveEpochs": 0,
+        "passedEpochCount": 30,
+        "submittedEpochCount": 30,
+        "totalEpochParticipationCount": 31,
+        "totalEpochsPrescribedCount": 31
+      },
+      "status": "joined",
+      "vaults": {}
+    }
+  ],
+  "hasMore": true,
+  "nextCursor": "-4xgjroXENKYhTWqrBo57HQwvDL51mMdfsdsxJy6Y2Z_sA",
+  "totalItems": 316,
+  "sortBy": "operatorStake",
+  "sortOrder": "desc"
 }
 ```
 </details>
@@ -346,33 +373,73 @@ const record = await io.getArNSRecord({ name: 'ardrive' });
 ```
 </details>
 
-#### `getArNSRecords()`
+#### `getArNSRecords({ cursor, limit, sortBy, sortOrder })`
 
-Retrieves all registered ArNS records of the IO process.
+Retrieves all registered ArNS records of the IO process, paginated and sorted by the specified criteria. The `cursor` used for pagination is the last ArNS name from the previous request.
 
 ```typescript
 const io = IO.init();
-const records = await io.getArNSRecords();
+// get the 5 newest names
+const records = await io.getArNSRecords({
+  limit: 5,
+  sortBy: 'startTimestamp',
+  sortOrder: 'desc',
+});
 ```
+
+Available `sortBy` options are any of the keys on the record object, e.g. `name`, `processId`, `endTimestamp`, `startTimestamp`, `type`, `undernames`.
 
 <details><summary>Output</summary>
 
 ```json
 {
-  "ardrive": {
-    "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
-    "endTimestamp": 1711122739,
-    "startTimestamp": 1694101828,
-    "type": "lease",
-    "undernames": 100
-  },
-  "ar-io": {
-    "processId": "eNey-H9RB9uCdoJUvPULb35qhZVXZcEXv8xds4aHhkQ",
-    "purchasePrice": 75541282285, // value in mIO
-    "startTimestamp": 1706747215,
-    "type": "permabuy",
-    "undernames": 10
-  }
+  "items": [
+    {
+      "name": "ao",
+      "processId": "eNey-H9RB9uCdoJUvPULb35qhZVXZcEXv8xds4aHhkQ",
+      "purchasePrice": 75541282285,
+      "startTimestamp": 1720720621424,
+      "type": "permabuy",
+      "undernames": 10
+    },
+    {
+      "name": "ardrive",
+      "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+      "endTimestamp": 1720720819969,
+      "startTimestamp": 1720720620813,
+      "type": "lease",
+      "undernames": 100
+    },
+    {
+      "name": "arweave",
+      "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+      "endTimestamp": 1720720819969,
+      "startTimestamp": 1720720620800,
+      "type": "lease",
+      "undernames": 100
+    },
+    {
+      "name": "ar-io",
+      "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+      "endTimestamp": 1720720819969,
+      "startTimestamp": 1720720619000,
+      "type": "lease",
+      "undernames": 100
+    },
+    {
+      "name": "fwd",
+      "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+      "endTimestamp": 1720720819969,
+      "startTimestamp": 1720720220811,
+      "type": "lease",
+      "undernames": 100
+    }
+  ],
+  "hasMore": true,
+  "nextCursor": "fwdresearch",
+  "totalItems": 21740,
+  "sortBy": "startTimestamp",
+  "sortOrder": "desc"
 }
 ```
 </details>
@@ -619,6 +686,21 @@ const { id: txId } = await io.joinNetwork(
 );
 ```
 
+#### `leaveNetwork()`
+
+Sets the gateway as `leaving` on the ar.io network. Requires `signer` to be provided on `IO.init` to sign the transaction. The gateway's operator and delegated stakes are vaulted and will be returned after the leave periods. The gateway will be removed from the network after the leave period.
+
+**NOTE**: Requires `signer` to be provided on `IO.init` to sign the transaction.
+
+```typescript
+const io = IO.init({ signer: new ArweaveSigner(jwk) });
+
+const { id: txId } = await io.leaveNetwork(
+  // optional additional tags
+  { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] },
+);
+```
+
 #### `updateGatewaySettings( gatewaySettings )`
 
 Writes new gateway settings to the caller's gateway configuration. 
@@ -808,7 +890,7 @@ The ANT client class exposes APIs relevant to compliant Arweave Name Token proce
 
 ### APIs
 
-#### `init(signer)`
+#### `init({signer, processId })`
 
 Factory function to that creates a read-only or writeable client. By providing a `signer` additional write APIs that require signing, like `setRecord` and `transfer` are available. By default, a read-only client is returned and no write APIs are available.
 
@@ -1023,6 +1105,8 @@ const { id: txId } = await ant.setTicker(
 );
 ```
 
+
+
 ### Configuration
 
 ANT clients can be configured to use custom AO processes. Refer to [AO Connect](https://github.com/permaweb/ao/tree/main/connect) for more information on how to configure the AO process to use specific AO infrastructure.
@@ -1039,6 +1123,49 @@ const ant = ANT.init({
     })
   })
 });
+```
+
+## Logging
+
+The library uses the [Winston](https://www.npmjs.com/package/winston) logger for node based projects, and `console` logger for web based projects by default. You can configure the log level via `setLogLevel()` API. Alternatively you can set a custom logger as the default logger so long as it satisfies the `ILogger` interface.
+
+### Configuration
+
+```typescript
+import { Logger } from '@ar.io/sdk';
+
+// set the log level
+Logger.default.setLogLevel('debug');
+
+// provide your own logger
+Logger.default = winston.createLogger({ ...loggerConfigs }); // or some other logger that satisifes ILogger interface
+```
+
+## Pagination
+
+Certain APIs that could return a large amount of data are paginated using cursors. The SDK uses the `cursor` pattern (as opposed to pages) to better protect against changing data while paginating through a list of items. For more information on pagination strategies refer to [this article](https://www.getknit.dev/blog/api-pagination-best-practices#api-pagination-techniques-).
+
+Paginated results include the following properties:
+
+  - `items`: the list of items on the current request, defaulted to 100 items.
+  - `nextCursor`: the cursor to use for the next batch of items. This is `undefined` if there are no more items to fetch.
+  - `hasMore`: a boolean indicating if there are more items to fetch. This is `false` if there are no more items to fetch.
+  - `totalItems`: the total number of items available. This may change as new items are added to the list, only use this for informational purposes.
+  - `sortBy`: the field used to sort the items, by default this is `startTimestamp`.
+  - `sortOrder`: the order used to sort the items, by default this is `desc`.
+
+To request all the items in a list, you can iterate through the list using the `nextCursor` until `hasMore` is `false`.
+
+```typescript
+let hasMore = true;
+let cursor: string | undefined;
+const gateaways = [];
+while (hasMore) {
+  const page = await io.getGateways({ limit: 10, cursor });
+  gateaways.push(...items);
+  cursor = page.nextCursor;
+  hasMore = page.hasMore;
+}
 ```
 
 ## Developers
