@@ -4,6 +4,12 @@
 
 Welcome to the documentation page for the ar.io SDK release notes. Here, you will find detailed information about each version of the ar.io SDK, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io SDK. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io SDK [change logs](https://github.com/ar-io/ar-io-sdk/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io SDK by referring to this page for all release-related information.
 
+## [2.0.1](https://github.com/ar-io/ar-io-sdk/compare/v2.0.0...v2.0.1) (2024-07-11)
+
+### Bug Fixes
+
+* **logger:** fixes the console logger to respect the log level provided by web clients ([99d7993](https://github.com/ar-io/ar-io-sdk/commit/99d79939806ef8f26407aa3237ea8773179b91a6))
+
 # [2.0.0](https://github.com/ar-io/ar-io-sdk/compare/v1.2.2...v2.0.0) (2024-07-11)
 
 ### Bug Fixes
