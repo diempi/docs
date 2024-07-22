@@ -4,6 +4,12 @@
 
 Welcome to the documentation page for the ar.io SDK release notes. Here, you will find detailed information about each version of the ar.io SDK, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the ar.io SDK. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: ar.io SDK [change logs](https://github.com/ar-io/ar-io-sdk/blob/main/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the ar.io SDK by referring to this page for all release-related information.
 
+## [2.0.2](https://github.com/ar-io/ar-io-sdk/compare/v2.0.1...v2.0.2) (2024-07-12)
+
+### Bug Fixes
+
+* **types:** update gateway settings type to only support `observerAddress` ([13e073b](https://github.com/ar-io/ar-io-sdk/commit/13e073ba6d7482028e43d5c8fbab8e769d2c9e01))
+
 ## [2.0.1](https://github.com/ar-io/ar-io-sdk/compare/v2.0.0...v2.0.1) (2024-07-11)
 
 ### Bug Fixes
