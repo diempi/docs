@@ -74,7 +74,7 @@ Inputting this into a WayFinder-equipped browser will route your request through
 
 ### ArNS
 
-Fetching content via an Arweave Name Service (ArNS) name is straightforward. Attach the ArNS name to `ar://`:
+Fetching content via an Arweave Name System (ArNS) name is straightforward. Attach the ArNS name to `ar://`:
 
 ```
 ar://good-morning
