@@ -259,7 +259,7 @@ The AR.IO Gateway allows configuration customization through environmental varia
             <th>CONTIGUOUS_DATA_CACHE_CLEANUP_THRESHOLD</th>
             <td>Number</td>
             <td>undefined</td>
-            <td>Sets the age threshold in sends; files older than this are candidates for contiguous data cache cleanup</td>
+            <td>Sets the age threshold in seconds; files older than this are candidates for contiguous data cache cleanup</td>
         </tr>
         <tr>
             <th>RUN_RESOLVER</th>
