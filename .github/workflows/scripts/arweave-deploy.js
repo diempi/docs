@@ -14,7 +14,7 @@ async function main() {
   const mime = (await import("mime")).default;
 
   const jwkBase64 = process.env.DEPLOY_KEY;
-  if (!jwk) {
+  if (!jwkBase64) {
     throw new Error(
       "The Arweave wallet key (DEPLOY_KEY) is missing or not accessible. Please ensure it is set as an environment variable."
     );
