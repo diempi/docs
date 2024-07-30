@@ -12,7 +12,8 @@ const { Readable } = require("stream");
 
 async function main() {
   const mime = (await import("mime")).default;
-  const jwk = process.env.DEPLOY_KEY;
+
+  const jwk = JSON.parse(process.env.DEPLOY_KEY);
   if (!jwk) {
     throw new Error(
       "The Arweave wallet key (DEPLOY_KEY) is missing or not accessible. Please ensure it is set as an environment variable."
