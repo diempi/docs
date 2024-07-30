@@ -43,7 +43,7 @@ async function main() {
   });
 
   const records = await ant.getRecords();
-  const arIoRecord = records["ar-io"].transactionId;
+  const arIoRecord = records["@"].transactionId;
   const url = `https://arweave.net/raw/${arIoRecord}`;
 
   async function fetchAndParseJson(url) {
