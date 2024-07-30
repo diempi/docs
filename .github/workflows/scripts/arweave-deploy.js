@@ -38,7 +38,7 @@ async function main() {
   };
 
   const ant = ANT.init({
-    signer: new ArweaveSigner(jwk),
+    signer: new ArweaveSigner(parsedKey),
     processId: "1-Bu7KDRqqKmX68XxAHmeDlYSlz6qjKXNYOQOBGrDMQ",
   });
 
