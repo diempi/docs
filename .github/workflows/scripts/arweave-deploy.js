@@ -194,7 +194,7 @@ async function main() {
     console.log(`New manifest uploaded with transaction ID: ${manifestId}`);
     const recordSet = await ant.setRecord(
       {
-        undername: "ar-io",
+        undername: "@",
         transactionId: manifestId,
         ttlSeconds: 900,
       },
