@@ -39,6 +39,7 @@ jobs:
 
       - name: Run deployment script
         env:
-          ARWEAVE_WALLET: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
+          cd .github/workflows/scripts
           node arweave-deploy.js
