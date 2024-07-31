@@ -34,12 +34,15 @@ jobs:
 
       - name: Install dependencies for deployment script
         run: |
-          cd .github/workflows/scripts
-          npm install
+          cd docs
+          npm install permaweb-deploy --include=dev --force
+          cd ..
 
       - name: Run deployment script
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID}}
         run: |
-          cd .github/workflows/scripts
-          node arweave-deploy.js
+          cd docs
+          yarn deploy
+          
