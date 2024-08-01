@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js environment for docs build
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: "20"
 
       - name: Install Yarn
         run: npm install -g yarn
@@ -25,17 +25,6 @@ jobs:
           cd docs
           yarn install --frozen-lockfile
           yarn build
-          cd ..
-
-      - name: Setup Node.js v20 for deployment
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20"
-
-      - name: Install dependencies for deployment script
-        run: |
-          cd docs
-          npm install permaweb-deploy --include=dev --force
           cd ..
 
       - name: Run deployment script
