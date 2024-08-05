@@ -73,6 +73,10 @@ module.exports = [
         path: "/gateways/ar-io-node/advanced-config",
       },
       {
+        title: "Bundler Sidecar",
+        path: "/gateways/ar-io-node/bundler"
+      },
+      {
         title: "Delegated Staking",
         path: "/gateways/ar-io-node/delegated-staking",
       },
