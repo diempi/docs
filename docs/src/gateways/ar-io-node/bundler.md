@@ -8,7 +8,7 @@ permalink: "/gateways/bundler"
 
 A [Turbo ANS-104](https://github.com/ardriveapp/turbo-upload-service/) data item bundler can be run alongside an ar.io gateway. This allows gateways the ability to accept data items to be submit to the Arweave blockweave. 
 
-The bundler service can be easily run inside Docker in the same way that the gateway is. It utilizes a separate docker compose file for configuration and deployment, which also allows for the use of a separate file for environmental variables specific to the bundler service. Additionally, the separation allows operators to spin their bundler service up or down at any time without effecting their core gateway service. Despite the use of separate docker compose files, the bundler service shares a docker network with the ar.io gateway, and so is able to directly interact with the gateway service and data.
+The bundler service can be easily run inside Docker in the same way that the gateway is. It utilizes a separate docker compose file for configuration and deployment, which also allows for the use of a separate file for environmental variables specific to the bundler service. Additionally, the separation allows operators to spin their bundler service up or down at any time without affecting their core gateway service. Despite the use of separate docker compose files, the bundler service shares a docker network with the ar.io gateway, and so is able to directly interact with the gateway service and data.
 
 **NOTE**: The bundler service relies on GraphQL indexing of recently bundled and uploaded data to manage its pipeline operations. The ar.io gateway should have its indexes synced up to Arweave's current block height before starting the bundler's service stack.
 
@@ -24,10 +24,6 @@ BUNDLER_ARWEAVE_ADDRESS='Address for above wallet'
 
 APP_NAME='ar.io bundler service'
 
-# Index on bundles from this bundler's wallet
-ANS104_INDEX_FILTER={ "always": true }
-ANS104_UNBUNDLE_FILTER={ "attributes": { "owner_address": "$BUNDLER_ARWEAVE_ADDRESS" } }
-
 # Use localstack s3 bucket for shared data source between ar.io gateway and bundler
 AWS_S3_BUCKET=ar.io
 AWS_S3_PREFIX='data'
@@ -40,9 +36,7 @@ AWS_ENDPOINT='http://localstack:4566'
 - `BUNDLER_ARWEAVE_WALLET` must be the entire jwk of an Arweave wallet's keyfile, stringified. All uploads of bundled data items to Arweave will be signed and paid for by this wallet, so it must maintain a balance of AR tokens sufficient to handle the uploads. 
 - `BUNDLER_ARWEAVE_ADDRESS` must be the normalized public address for the provided Arweave wallet.
 
-The `ANS104` variables define filters for unbundling ANS-104 bundles and indexing the data items they contain. The filters provided in the `.env.bundler.example` file will unbundle anything that was submitted to Arweave by the provided bundler wallet, and index all contained data items. This will allow the accompanying ar.io gateway to serve this data almost instantaneously, even if it has not settled on the Arweave blockweave yet.
-
-The remaining lines in the `.env.bundler.example` file control settings that allow the bundler service to share data with the ar.io gateway. If the gateway is not using custom data configurations, the provided values should be sufficient to sync the bundler and gateway.
+The remaining lines in the `.env.bundler.example` file control settings that allow the bundler service to share data with the ar.io gateway. Data sharing of contiguous data between a bundler and a gateway allows the gateway to serve optimistically cached data without waiting for it to fully settle on chain.
 
 ### Managing Bundler Access
 
@@ -100,6 +94,17 @@ The following permissioning configurations schemes are also possible:
         </tr>
     </table>
 </div>
+
+### Indexing
+
+Bundlers submit data to the Arweave network as an [ANS-104 data item bundle](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-104.md). This means it is several transactions wrapped into one. A gateway will need to unbundle these transactions in order to index them. A gateway should include the following ANS-104 filters in order to unbundle and index transactions from a particular bundler:
+
+```bash
+ANS104_INDEX_FILTER={ "always": true }
+ANS104_UNBUNDLE_FILTER={ "attributes": { "owner_address": "$BUNDLER_ARWEAVE_ADDRESS" } }
+```
+
+`$BUNDLER_ARWEAVE_ADDRESS` should be replaced with the normalized public wallet address associated with the bundler.
 
 ## Starting and Stopping the Bundler
 
